@@ -2,10 +2,12 @@ from flask import Flask, render_template, request, send_from_directory
 import os 
 
 app = Flask(__name__)
-file_name = ""
-file_path = ""
-#最初の画面の表示
 
+#ファイルの名前
+file_name = ""
+
+
+#最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('sample.html')
@@ -21,9 +23,10 @@ def play_music():
 def upload_file():
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
-    #保存先のパスとファイル名を指定
+    #保存先のファイル名を指定
     global file_name
     file_name = str(file.filename)
+    #保存先のパスとファイル名を指定
     file_path = os.path.join('./music/', file.filename)
     #指定した形式で保存
     file.save(file_path)
