@@ -23,13 +23,17 @@ def play_music():
 def upload_file():
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
+
     #保存先のファイル名を指定
     global file_name
     file_name = str(file.filename)
+
     #保存先のパスとファイル名を指定
     file_path = os.path.join('./music/', file.filename)
+
     #指定した形式で保存
     file.save(file_path)
+    
     #次の外面に遷移する
     #nameはファイルのパス
     return render_template('post.html',name = file_path)
