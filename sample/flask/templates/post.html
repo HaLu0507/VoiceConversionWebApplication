@@ -10,6 +10,7 @@
     <body>
         <h1>ボイスチェンジャー</h1>
         <p>自分の今の気分をテキストボックスに記入してね!<br>
+            {{name}}
             AIがあなたの気持ちと似た曲を探してくれるよ!
         やったー！！</p>
         
@@ -22,7 +23,7 @@
 
     <body>
         <audio controls>
-            <source src="sampleAudio.wav">
+            <source src={{name}}>
         </audio>
     </body>
 
