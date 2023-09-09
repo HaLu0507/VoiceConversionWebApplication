@@ -16,6 +16,9 @@ def index():
 @app.route('/music')
 def play_music():
     global file_name
+    
+    #第一引数が取得したいファイルのディレクトリ名、
+    #第二引数が取得したいファイルのファイル名
     return send_from_directory("music", file_name)
 
 #音声ファイルを取得するメソッド
