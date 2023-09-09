@@ -5,6 +5,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>ボイスチェンジャー！</title>
         <script type="text/javascript" src="index.js"></script>
+        <style>
+            .child {
+            float: left;
+            }
+            
+            .child {
+            text-align: center;
+            line-height: 100px;
+            width: 400px;
+            height: 100px;
+            }
+        </style>
     </head>
 
     <body>
@@ -19,18 +31,18 @@
           </div>
         </form>        
 
-        <body>
+        <div class="child">
             <h1>変換前</h1>
             <audio controls>
                 <source src="/beforeMusic">
             </audio>
-        </body>
+        </div>
 
-        <body>
+        <div class="child">
             <h1>変換後</h1>
             <audio controls>
                 <source src="/afterMusic">
             </audio>
-        </body>
+        </div>
 
 </html>
