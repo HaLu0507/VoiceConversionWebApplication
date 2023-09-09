@@ -3,8 +3,9 @@ import os
 
 app = Flask(__name__)
 
-#ファイルの名前
+#変換前のファイルの名前
 file_name_before = ""
+#変換後のファイルの名前
 file_name_after = ""
 
 
