@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>ボイスチェンジャー</title>
+        <script type="text/javascript" src="index.js"></script>
+    </head>
+
+    <body>
+        <h1>ボイスチェンジャー</h1>
+        <p>自分の今の気分をテキストボックスに記入してね!<br>
+            AIがあなたの気持ちと似た曲を探してくれるよ!
+        やったー！！</p>
+        
+        <form method="post" action = "/second" enctype="multipart/form-data">
+          <div>
+            <label for="file">アップロードするファイルを選択してください<br></label>
+            <input type="file" accept="audio/*" id="file" name="file" multiple />
+          </div>
+          <div>
+            <button>送信</button>
+          </div>
+        </form>        
+
+    <body>
+        <audio controls>
+            <source src="sampleAudio.wav">
+        </audio>
+    </body>
+
+</html>
