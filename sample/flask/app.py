@@ -33,6 +33,7 @@ def play_music_after():
     #第二引数が取得したいファイルのファイル名
     return send_from_directory("music", file_name_after)
 
+
 #音声ファイルを取得するメソッド
 @app.route('/second', methods=['GET', 'POST'])
 def upload_file():
