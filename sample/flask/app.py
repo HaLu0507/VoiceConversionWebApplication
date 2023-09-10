@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, send_from_directory
 import os 
-#from models.converters.CycleGAN_VC2.convert import convert
+from models.converters.CycleGAN_VC2.convert import convert
 
 app = Flask(__name__)
 
@@ -54,9 +54,9 @@ def upload_file():
 
     #変換後の音声
     global file_name_after
-    file_name_after = str(file.filename)
+    file_name_after = "converted_" + str(file.filename)
 
-    #convert(file_name=file_name_before, file_path=file_path)
+    convert(file_name=file_name_before, file_path=file_path)
 
     #次の外面に遷移する
     #nameはファイルのパス
