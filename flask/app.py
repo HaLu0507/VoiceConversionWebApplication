@@ -79,6 +79,7 @@ def upload_file():
 
     # 拡張子の変更
     file_name_before = convertExt(file_name_before)
+    print(file_name_before)
     # 参照するパスとファイル名を変更
     file_path = os.path.join('./music/', file_name_before)
 
@@ -86,7 +87,6 @@ def upload_file():
     global file_name_after
     file_name_after = str(file.filename).split(".")[0]
     file_name_after = "converted_" + str(file_name_after) +".wav"
-
     convert(file_name=file_name_before, file_path=file_path)
 
     #次の外面に遷移する
