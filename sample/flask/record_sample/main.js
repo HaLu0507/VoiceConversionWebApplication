@@ -12,28 +12,36 @@ async function main () {
     audio: true,
   })
 
+  //audio/webmが対応しているかどうか
   if (!MediaRecorder.isTypeSupported('audio/webm')) { // <2>
     console.warn('audio/webm is not supported')
   }
+
+  //mediaRecorderの作成
   const mediaRecorder = new MediaRecorder(stream, { // <3>
     mimeType: 'audio/webm',
   })
 
-  mediaRecorder.addEventListener('dataavailable', function(e) {
-    if (e.data.size > 0) recordedChunks.push(e.data);
-  });
-
-
+  //スタートボタンを押したときの処理
   buttonStart.addEventListener('click', () => {
+    //録音スタート
     mediaRecorder.start() // <4>
+    //スタートボタンをおせないように
     buttonStart.setAttribute('disabled', '')
+    //ストップボタンを押せるように
     buttonStop.removeAttribute('disabled')
   })
 
+  //ストップボタンを押したときの処理
   buttonStop.addEventListener('click', () => {
+    //録音スタート
     mediaRecorder.stop() // <5>
+    //スタートボタンをおせるように
     buttonStart.removeAttribute('disabled')
+    //ストップボタンを押せ無いように
     buttonStop.setAttribute('disabled', '')
+    //ファイルのダウンロード
+    //Blobを使えばサーバー場に保存できそう？
     downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
     downloadLink.download = 'acetest.wav';
   })
