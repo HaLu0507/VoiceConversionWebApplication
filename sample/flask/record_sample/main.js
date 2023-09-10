@@ -1,3 +1,4 @@
+//参考にしたサイト：https://zenn.dev/tatsuyasusukida/articles/e9fc25bcdbd370
 main()
 
 async function main () {
@@ -41,7 +42,7 @@ async function main () {
     //ストップボタンを押せ無いように
     buttonStop.setAttribute('disabled', '')
     //ファイルのダウンロード
-    //Blobを使えばサーバー場に保存できそう？
+    //Blobを使えばサーバー場に保存できそう？(https://web.dev/media-recording-audio/?hl=ja)
     downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
     downloadLink.download = 'acetest.wav';
   })
