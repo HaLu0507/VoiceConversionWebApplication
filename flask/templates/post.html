@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>ボイスチェンジャー！</title>
+        <style>
+            .child {
+            float: left;
+            }
+            
+            .child {
+            text-align: center;
+            line-height: 100px;
+            width: 400px;
+            height: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>ボイスチェンジャー</h1>
+        <p>音声をアップロードしてね!<br>
+            AIがあなたの声を変換してくれるよ!</p>
+        
+        <form method="post" action = "/second" enctype="multipart/form-data">
+          <div>
+            <input type="file" name="file" accept="audio/*"><br>
+            <input type="submit" value="アップロード">
+          </div>
+        </form>        
+
+        <div class="child">
+            <h1>変換前</h1>
+            <audio controls>
+                <source src="/beforeMusic">
+            </audio>
+        </div>
+
+        <div class="child">
+            <h1>変換後</h1>
+            <audio controls>
+                <source src="/afterMusic">
+            </audio>
+        </div>
+
+</html>

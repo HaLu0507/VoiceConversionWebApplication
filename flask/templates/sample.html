@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>ボイスチェンジャー</title>
+        <style>
+          .record {
+          float: left;
+          }
+          
+          .record {
+          text-align: center;
+          line-height: 20px;
+          width: 400px;
+          height: 100px;
+          }
+
+          .submit {
+          text-align: center;
+          line-height: 40px;
+          width: 800px;
+          height: 100px;
+          }
+      </style>
+    </head>
+
+    <body>
+        <h1>ボイスチェンジャー</h1>
+        <p>音声をアップロードしてね!<br>
+            AIがあなたの声を変換してくれるよ!</p>
+        
+        <div class="record">
+          <p>録音して変換！<br>
+            スタートで録音開始、ストップで終了！</p>      
+          <button id="start">Start</button>
+          <button id="stop">Stop</button>
+        </div>
+
+        <form method="post" action = "/second" enctype="multipart/form-data">
+          <div class="record">
+            <p>ファイルをアップロードして変換！<br>
+            パソコンの中にあるファイルを選択してね！</p> 
+            <input type="file" name="file" accept="audio/*"><br>
+          </div>
+
+          <script type="text/javascript" src = "static/js/script.js"></script>
+          <div class="submit">
+            <audio id="audio" controls></audio>
+            <input type="submit" value="アップロード">
+          </div>
+        </form> 
+
+</html>
