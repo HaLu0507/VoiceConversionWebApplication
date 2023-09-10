@@ -39,23 +39,29 @@ def convertExt(file_name):
 def index():
     return render_template('sample.html')
 
-#音声を再生するためのメソッド？
-@app.route('/beforeMusic')
-def play_music_before():
-    global file_name_before
+# #音声を再生するためのメソッド？
+# @app.route('/beforeMusic')
+# def play_music_before():
+#     global file_name_before
+@app.route("/music_before/<path:filename>")
+def play1(filename):
+    return send_from_directory("music", filename)
 
     #第一引数が取得したいファイルのディレクトリ名、
     #第二引数が取得したいファイルのファイル名
-    return send_from_directory("music", file_name_before)
+    #return send_from_directory("music", file_name_before)
 
 #音声を再生するためのメソッド？
-@app.route('/afterMusic')
-def play_music_after():
-    global file_name_after
+# @app.route('/afterMusic')
+# def play_music_after():
+#     global file_name_after
+@app.route("/music_after/<path:filename>")
+def play2(filename):
+    return send_from_directory("music", filename)
 
     #第一引数が取得したいファイルのディレクトリ名、
     #第二引数が取得したいファイルのファイル名
-    return send_from_directory("music", file_name_after)
+    #return send_from_directory("music", file_name_after)
 
 
 #音声ファイルを取得するメソッド
@@ -87,11 +93,14 @@ def upload_file():
     global file_name_after
     file_name_after = str(file.filename).split(".")[0]
     file_name_after = "converted_" + str(file_name_after) +".wav"
+    print(file_name_after)
     convert(file_name=file_name_before, file_path=file_path)
 
     #次の外面に遷移する
     #nameはファイルのパス
-    return render_template('post.html')
+    return render_template('post.html', fileB = str(file_name_before), fileA = str(file_name_after))
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
