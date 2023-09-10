@@ -85,13 +85,14 @@ def upload_file():
 
     #変換後の音声
     global file_name_after
-    file_name_after = "converted_" + str(file.filename)
+    file_name_after = str(file.filename).split(".")[0]
+    file_name_after = "converted_" + str(file_name_after) +".wav"
 
     convert(file_name=file_name_before, file_path=file_path)
 
     #次の外面に遷移する
     #nameはファイルのパス
-    return render_template('post.html',name = file_path)
+    return render_template('post.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
