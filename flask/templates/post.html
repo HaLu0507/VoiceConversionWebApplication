@@ -5,25 +5,36 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="stylesheet" href="/static/css/post.css">
         <title>音声変換</title>
+        <script>
+            function OnButtonClick() {
+                document.querySelector("input[type='file']").click();
+            }
+        </script>
     </head>
 
     <body>
         <h1>AIを使って音声を変換しよう!!!</h1>
         
-        <form method="post" action="/upload" enctype="multipart/form-data">
-            <div>
-                <p>男性から女性に変換するか、女性から男性に変換するか選んでね</p>
-                <label class = "pulldown">
-                    <select name="sel">
-                        <option disabled selected>選択して下さい</option>
-                        <option value="convertM2W">男性から女性に変換</option>
-                        <option value="convertW2M">女性から男性に変換</option>
-                    </select>
-                </label>
-            <p>音声をアップロードしてね!</p>
-            <input type="file" name="file" accept="audio/*"><br>
+        <form method="post" action = "/upload" enctype="multipart/form-data">
+
+            <label class = "pulldown">
+                <select name="sel">
+                    <option disabled selected>選択して下さい</option>
+                    <option value="changeM2W">男性から女性に変換</option>
+                    <option value="changeW2M">女性から男性に変換</option>
+                </select>
+            </label>
+
+            <label class = "fileButton">
+                <input type="button" value="ファイルを選択" onclick="OnButtonClick();"/>
+            </label>
+            <label class = "fileUp">
+                <input type="file" name="file" accept="audio/*">
+            </label>
+            
+            <br>
+
             <input type="submit" value="アップロード">
-            </div>
         </form>        
 
         {% if boolean %}
