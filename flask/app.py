@@ -49,7 +49,7 @@ def index():
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     #変換が男性から女性か女性から男性かの文字列
-    #男性から女性:"changeMtoW",  女性から男性:"changeWtoM"
+    #男性から女性:"convertM2W",  女性から男性:"convertW2M"
     mode = request.form.get('sel')
 
     #htmlでアップロードされたファイルを取得
@@ -81,7 +81,7 @@ def upload_file():
     file_name_after = "converted_" + str(file_name_after) +".wav"
 
     #音声変換
-    convert(file_name=file_name_before, file_path=file_path)
+    convert(file_name=file_name_before, file_path=file_path, mode=mode)
 
     #次の外面に遷移する
     #fileBは変換前の音声ファイル、fileAは変換後の音声ファイル
