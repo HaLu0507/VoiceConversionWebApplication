@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_from_directory
 import os 
 from models.converters.CycleGAN_VC2.convert import convert
+from models.preprocess.removalNoise import removalBackgroundNoise
 
 app = Flask(__name__)
 
@@ -28,8 +29,6 @@ def convertExt(file_name):
         os.system(f"afconvert -f WAVE -d LEI24 {path}/{name}.{ext} {path}/{name}.wav")
 
     return f"{name}.wav"
-
-
 
 #音声をhtmlに送信するメソッド
 @app.route("/music/<path:filename>")
@@ -80,7 +79,10 @@ def upload_file():
     file_name_after = str(file.filename).split(".")[0]
     file_name_after = "converted_" + str(file_name_after) +".wav"
 
-    #音声変換
+    # ユーザがアップロードした音声の背景ノイズを除去する
+    removalBackgroundNoise(file_path)
+
+    # 音声変換
     convert(file_name=file_name_before, file_path=file_path, mode=mode)
 
     #次の外面に遷移する
