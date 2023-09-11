@@ -42,7 +42,7 @@ def play_before(filename):
 #最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('sample.html')
+    return render_template('post.html',boolean = False)
 
 
 #音声ファイルを取得するメソッド
@@ -60,11 +60,11 @@ def upload_file():
 
     #ファイルを選択しなかったときの処理
     if file_name_before == "":
-        return render_template('sample.html',error = "ファイルを選択してください")
+        return render_template('post.html',error = "ファイルを選択してください",boolean = False)
     
     #modeを何も選択しなかったときの処理
     if mode == None:
-        return render_template('sample.html',error = "変換方法を選択してください")
+        return render_template('post.html',error = "変換方法を選択してください",boolean = False)
     
     #保存先のパスとファイル名を指定
     file_path = os.path.join('./music/', file.filename)
@@ -85,7 +85,7 @@ def upload_file():
 
     #次の外面に遷移する
     #fileBは変換前の音声ファイル、fileAは変換後の音声ファイル
-    return render_template('post.html', fileB = str(file_name_before), fileA = str(file_name_after))
+    return render_template('post.html', fileB = str(file_name_before), fileA = str(file_name_after),boolean = True)
 
 
 
