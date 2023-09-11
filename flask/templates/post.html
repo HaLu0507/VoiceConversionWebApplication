@@ -23,8 +23,13 @@
         <p>音声をアップロードしてね!<br>
             AIがあなたの声を変換してくれるよ!</p>
         
-        <form method="post" action = "/second" enctype="multipart/form-data">
+        <form method="post" action = "/upload" enctype="multipart/form-data">
           <div>
+            <select name="sel">
+                <option disabled selected>選択して下さい</option>
+                <option value="changeMtoW">男性から女性に変換</option>
+                <option value="changeWtoM">女性から男性に変換</option>
+            </select>
             <input type="file" name="file" accept="audio/*"><br>
             <input type="submit" value="アップロード">
           </div>
