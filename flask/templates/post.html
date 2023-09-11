@@ -13,31 +13,33 @@
             AIがあなたの声を変換してくれるよ!</p>
         
         <form method="post" action = "/upload" enctype="multipart/form-data">
-          <div>
-            <select name="sel">
-                <option disabled selected>選択して下さい</option>
-                <option value="changeMtoW">男性から女性に変換</option>
-                <option value="changeWtoM">女性から男性に変換</option>
-            </select>
+            <div>
+                <label class = "pulldown">
+                    <select name="sel">
+                        <option disabled selected>選択して下さい</option>
+                        <option value="changeMtoW">男性から女性に変換</option>
+                        <option value="changeWtoM">女性から男性に変換</option>
+                    </select>
+                </label>
             <input type="file" name="file" accept="audio/*"><br>
             <input type="submit" value="アップロード">
-          </div>
+            </div>
         </form>        
 
         {% if boolean %}
-        <p class="ok">
-            <div class="play">
-                <h1>変換前</h1>
-                <audio src="/music/{{fileB}}" controls></audio>
-            </div>
+            <p class="ok">
+                <div class="play">
+                    <h1>変換前</h1>
+                    <audio src="/music/{{fileB}}" controls></audio>
+                </div>
 
-            <div class="play">
-                <h1>変換後</h1>
-                <audio src="/music/{{fileA}}" controls></audio>
-            </div>
-        </p>
+                <div class="play">
+                    <h1>変換後</h1>
+                    <audio src="/music/{{fileA}}" controls></audio>
+                </div>
+            </p>
         {% else %}
-        <p class="ng">
+            <p class="ng">
         {% endif %}
 
 </html>
