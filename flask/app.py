@@ -51,14 +51,19 @@ def upload_file():
     #変換が男性から女性か女性から男性かの文字列
     mode = request.form.get('sel')
     print(mode)
-    
+
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
 
     #保存先のファイル名を指定
     file_name_before = str(file.filename)
 
+    #ファイルを選択しなかったときの処理
     if file_name_before == "":
+        return render_template('sample.html')
+    
+    #modeを何も選択しなかったときの処理
+    if mode == None:
         return render_template('sample.html')
     
     #保存先のパスとファイル名を指定
