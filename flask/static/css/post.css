@@ -64,8 +64,15 @@ h1:after {
     cursor: pointer;
 }
 
-.pulldown select:focus {
-    outline: 1px solid #2589d0;
+.fileButton {
+    padding: 10px 40px;
+    color: #ffffff;
+    background-color: #384878;
+    cursor: pointer;
+}
+  
+.fileUp {
+    display: none;
 }
 
 .play {
