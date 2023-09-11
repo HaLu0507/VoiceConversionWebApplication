@@ -15,13 +15,14 @@
     <body>
         <h1>AIを使って音声を変換しよう!!!</h1>
         
-        <form method="post" action = "/upload" enctype="multipart/form-data">
-
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            
+            <p>男性から女性に変換するか、女性から男性に変換するか選んでください</p>
             <label class = "pulldown">
                 <select name="sel">
                     <option disabled selected>選択して下さい</option>
-                    <option value="changeM2W">男性から女性に変換</option>
-                    <option value="changeW2M">女性から男性に変換</option>
+                    <option value="convertM2W">男性から女性に変換</option>
+                    <option value="convertW2M">女性から男性に変換</option>
                 </select>
             </label>
 
