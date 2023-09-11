@@ -4,23 +4,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="stylesheet" href="/static/css/post.css">
-        <title>ボイスチェンジャー！</title>
+        <title>音声変換</title>
     </head>
 
     <body>
-        <h1>ボイスチェンジャー</h1>
-        <p>音声をアップロードしてね!<br>
-            AIがあなたの声を変換してくれるよ!</p>
+        <h1>AIを使って音声を変換しよう!!!</h1>
         
-        <form method="post" action = "/upload" enctype="multipart/form-data">
+        <form method="post" action="/upload" enctype="multipart/form-data">
             <div>
+                <p>男性から女性に変換するか、女性から男性に変換するか選んでね</p>
                 <label class = "pulldown">
                     <select name="sel">
                         <option disabled selected>選択して下さい</option>
-                        <option value="changeMtoW">男性から女性に変換</option>
-                        <option value="changeWtoM">女性から男性に変換</option>
+                        <option value="convertM2W">男性から女性に変換</option>
+                        <option value="convertW2M">女性から男性に変換</option>
                     </select>
                 </label>
+            <p>音声をアップロードしてね!</p>
             <input type="file" name="file" accept="audio/*"><br>
             <input type="submit" value="アップロード">
             </div>
