@@ -7,8 +7,14 @@
         <title>音声変換</title>
         <script>
             function OnButtonClick() {
-                document.querySelector("input[type='file']").click();
+                document.querySelector("#fileUp").click();
             }
+
+            function inputChange(){
+                let element = document.querySelector("#fileUp");
+                document.querySelector("#filename").innerText = (element.files[0].name);
+            }
+
         </script>
     </head>
 
@@ -25,20 +31,20 @@
                 </select>
             </label>
 
-            <label class = "fileButton">
-                <input type="button" value="ファイルを選択" onclick="OnButtonClick();"/>
-            </label>
-            <label class = "fileUp">
-                <input type="file" name="file" accept="audio/*">
-            </label>
+            <input type="button" id = "fileButton" value="ファイルを選択" onclick="OnButtonClick();"/>
+            <p id="filename">ファイルが選択されていません</p>
+
+
+            <input type="file" name="file" id="fileUp" accept="audio/*" onchange="inputChange()">
             
             <br>
 
-            <input type="submit" value="アップロード">
+            <input type="submit" value="アップロード" id = "submitButton">
+            
         </form>        
 
         {% if boolean %}
-            <p class="ok">
+            <p2 class="ok">
                 <div class="play">
                     <h2>変換前</h2>
                     <audio src="/music/{{fileB}}" controls></audio>
@@ -48,9 +54,9 @@
                     <h2>変換後</h2>
                     <audio src="/music/{{fileA}}" controls></audio>
                 </div>
-            </p>
+            </p2>
         {% else %}
-            <p class="ng">
+            <p2 class="ng">
         {% endif %}
 
 </html>

@@ -64,14 +64,30 @@ h1:after {
     cursor: pointer;
 }
 
-.fileButton {
-    padding: 10px 40px;
-    color: #ffffff;
-    background-color: #384878;
-    cursor: pointer;
+#fileButton {
+    position: relative;
+    left:50px;
+    height: 2.8em;
+    width: 230px;
+    border: 2px solid #2589d0;
+    background-color: #fff;
+    color: #857a7a;
+    font-size: 1em;
+}
+
+#submitButton {
+    position: relative;
+    top: 10pt;
+    height: 40px;
+    width: 120px;
+    border-radius: 20px;
+    background-color: #2589d0;
+    border: 0px solid #2589d0;
+    color: black;
+    font-size: 1em;
 }
   
-.fileUp {
+#fileUp {
     display: none;
 }
 
