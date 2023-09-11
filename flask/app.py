@@ -49,8 +49,8 @@ def index():
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     #変換が男性から女性か女性から男性かの文字列
+    #男性から女性:"changeMtoW",  女性から男性:"changeWtoM"
     mode = request.form.get('sel')
-    print(mode)
 
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
