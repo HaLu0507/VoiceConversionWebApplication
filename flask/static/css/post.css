@@ -1,3 +1,6 @@
+/*
+見出しの
+*/
 h1 {
     position: relative;
     text-align: center;
@@ -16,10 +19,18 @@ h1:after {
     background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
 }
 
+
+/*
+警告文の
+*/
 #error{
     color: red;
 }
 
+
+/*
+プルダウンの
+*/
 .pulldown {
     position: relative;
 }
@@ -67,6 +78,10 @@ h1:after {
     cursor: pointer;
 }
 
+
+/*
+ファイルをアップロードするときのボタンの
+*/
 #fileButton {
     position: relative;
     height: 2.8em;
@@ -77,6 +92,10 @@ h1:after {
     font-size: 1em;
 }
 
+
+/*
+アップロードするファイル名の
+*/
 #filename{
     top: 7pt;
     left: 10pt;
@@ -85,6 +104,9 @@ h1:after {
 }
 
 
+/*
+送信ボタンの
+*/
 #submitButton {
     position: relative;
     top: 10pt;
@@ -97,11 +119,18 @@ h1:after {
     font-size: 1em;
 }
 
-  
+
+/*
+ファイルをアップロードするの
+*/  
 #fileUp {
     display: none;
 }
 
+
+/*
+音声を再生するときの
+*/
 .play {
 float: left;
 }
