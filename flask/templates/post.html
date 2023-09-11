@@ -22,6 +22,9 @@
 
     <body>
         <h1>AIを使って音声を変換しよう!!!</h1>
+        {% if error != "" %}
+        <p id ="error">{{error}}</p>
+        {% endif %}
         
         <form method="post" action="/upload" enctype="multipart/form-data">
             
@@ -42,7 +45,6 @@
 
             <input type="file" name="file" id="fileUp" accept="audio/*" onchange="inputChange()">
             
-            <br>
 
             <input type="submit" value="アップロード" id = "submitButton">
             

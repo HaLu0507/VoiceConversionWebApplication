@@ -16,6 +16,9 @@ h1:after {
     background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
 }
 
+#error{
+    color: red;
+}
 
 .pulldown {
     position: relative;
@@ -74,9 +77,16 @@ h1:after {
     font-size: 1em;
 }
 
+#filename{
+    top: -30pt;
+    left: 180pt;
+    position: relative;
+    color: red;
+}
+
 #submitButton {
     position: relative;
-    top: 10pt;
+    top: -10pt;
     height: 40px;
     width: 120px;
     border-radius: 20px;
@@ -85,6 +95,7 @@ h1:after {
     color: black;
     font-size: 1em;
 }
+
   
 #fileUp {
     display: none;
