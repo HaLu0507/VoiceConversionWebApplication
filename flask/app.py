@@ -60,11 +60,11 @@ def upload_file():
 
     #ファイルを選択しなかったときの処理
     if file_name_before == "":
-        return render_template('sample.html')
+        return render_template('sample.html',error = "ファイルを選択してください")
     
     #modeを何も選択しなかったときの処理
     if mode == None:
-        return render_template('sample.html')
+        return render_template('sample.html',error = "変換方法を選択してください")
     
     #保存先のパスとファイル名を指定
     file_path = os.path.join('./music/', file.filename)
