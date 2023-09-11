@@ -78,15 +78,16 @@ h1:after {
 }
 
 #filename{
-    top: -30pt;
-    left: 180pt;
+    top: 7pt;
+    left: 10pt;
     position: relative;
-    color: red;
+    display: inline-block;
 }
+
 
 #submitButton {
     position: relative;
-    top: -10pt;
+    top: 10pt;
     height: 40px;
     width: 120px;
     border-radius: 20px;

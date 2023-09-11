@@ -40,12 +40,11 @@
 
             <p>変換するファイルを選んでください</p>
             <input type="button" id = "fileButton" value="ファイルを選択" onclick="OnButtonClick();"/>
-            <p id="filename">ファイルが選択されていません</p>
+            <p id="filename"><span>ファイルが選択されていません!</span></p>
 
 
             <input type="file" name="file" id="fileUp" accept="audio/*" onchange="inputChange()">
-            
-
+            <br>
             <input type="submit" value="アップロード" id = "submitButton">
             
         </form>        
