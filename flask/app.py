@@ -30,10 +30,6 @@ def convertExt(file_name):
     return f"{name}.wav"
 
 
-#最初の画面の表示
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('sample.html')
 
 #音声をhtmlに送信するメソッド
 @app.route("/music/<path:filename>")
@@ -43,9 +39,18 @@ def play_before(filename):
     return send_from_directory("music", filename)
 
 
+#最初の画面の表示
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('sample.html')
+
+
 #音声ファイルを取得するメソッド
-@app.route('/second', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
+    #変換が男性から女性か女性から男性かの文字列
+    mode = request.form.get('sel')
+    print(mode)
     
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
