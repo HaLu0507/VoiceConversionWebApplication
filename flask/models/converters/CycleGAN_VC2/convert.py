@@ -38,13 +38,14 @@ def normalize_mel(wav):
 
     return mel_normalized
     
-def convert(file_name, file_path):
+def convert(file_name, file_path, mode):
     """ 引数で与えられた音声ファイルを変換し, 変換した音声ファイルを保存するメソッド
         convert()メソッドと異なり正規化を行なっている.
 
     Args:
         file_name : 音声のファイル名
         file_path : 変換前の音声のパス
+        mode : convertM2W if male -> female else convertW2M
     """
 
     # 変換した音声を保存するディレクトリ
@@ -87,11 +88,18 @@ def convert(file_name, file_path):
 
     # conversion
     # converted_mel_normalized : torch(1, Hz, Time)
-    converted_mel_normalized = generatorM2F(mel_normalized)
+    if mode == "convertM2F": # convert male 2 female
+        converted_mel_normalized = generatorM2F(mel_normalized)
+    else: # convert female 2 male
+        converted_mel_normalized = generatorF2M(mel_normalized)
+
 
     # torch -> numpy & mel_normalized -> mel & numpy -> torch
     converted_mel_normalized = converted_mel_normalized.to('cpu').detach().numpy().copy()
-    converted_mel = (converted_mel_normalized * female_mel_std) + female_mel_mean
+    if mode == "convertM2F": # male 2 female
+        converted_mel = (converted_mel_normalized * female_mel_std) + female_mel_mean
+    else: # female 2 male
+        converted_mel = (converted_mel_normalized * male_mel_std) + male_mel_mean
     converted_mel = torch.from_numpy(converted_mel.astype(np.float32)).clone()
 
     # mel sp -> wav
