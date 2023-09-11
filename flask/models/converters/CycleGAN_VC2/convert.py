@@ -21,7 +21,7 @@ def normalize_mel(wav):
 
     # wav -> mel-spec
     spec = vocoder(torch.tensor([wav]))
-    print(f"spec shape : {spec.shape}") # maybe (1, Hz, Time)
+    # print(f"spec shape : {spec.shape}") # maybe (1, Hz, Time)
     # tensor -> numpy
     spec = spec.cpu().detach().numpy()[0] # spec shape : (Hz, Time)
 

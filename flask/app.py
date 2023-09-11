@@ -16,13 +16,13 @@ def convertExt(file_name):
 
     # 拡張子を取り出す
     ext = file_name.split('.')[-1]
-    print(f"拡張子 : {ext}")
+    # print(f"拡張子 : {ext}")
     # ファイル名を取り出す
     name = file_name.split('.')[0]
-    print(f"ファイル名 : {name}")
+    # print(f"ファイル名 : {name}")
     # 音声ファイルがあるディレクトリ
     path = "./music"
-    print(f"パス : {path}")
+    # print(f"パス : {path}")
 
     if ext != "wav": # wav 以外
         os.system(f"afconvert -f WAVE -d LEI24 {path}/{name}.{ext} {path}/{name}.wav")
