@@ -4,10 +4,6 @@ from models.converters.CycleGAN_VC2.convert import convert
 
 app = Flask(__name__)
 
-#変換前のファイルの名前
-file_name_before = ""
-#変換後のファイルの名前
-file_name_after = ""
 
 def convertExt(file_name):
     """ ユーザから得られた音声データの拡張子をwavに変更するメソッド
@@ -39,29 +35,12 @@ def convertExt(file_name):
 def index():
     return render_template('sample.html')
 
-# #音声を再生するためのメソッド？
-# @app.route('/beforeMusic')
-# def play_music_before():
-#     global file_name_before
-@app.route("/music_before/<path:filename>")
-def play1(filename):
-    return send_from_directory("music", filename)
-
+#音声をhtmlに送信するメソッド
+@app.route("/music/<path:filename>")
+def play_before(filename):
     #第一引数が取得したいファイルのディレクトリ名、
     #第二引数が取得したいファイルのファイル名
-    #return send_from_directory("music", file_name_before)
-
-#音声を再生するためのメソッド？
-# @app.route('/afterMusic')
-# def play_music_after():
-#     global file_name_after
-@app.route("/music_after/<path:filename>")
-def play2(filename):
     return send_from_directory("music", filename)
-
-    #第一引数が取得したいファイルのディレクトリ名、
-    #第二引数が取得したいファイルのファイル名
-    #return send_from_directory("music", file_name_after)
 
 
 #音声ファイルを取得するメソッド
@@ -72,7 +51,6 @@ def upload_file():
     file = request.files['file']
 
     #保存先のファイル名を指定
-    global file_name_before
     file_name_before = str(file.filename)
 
     if file_name_before == "":
@@ -85,19 +63,18 @@ def upload_file():
 
     # 拡張子の変更
     file_name_before = convertExt(file_name_before)
-    print(file_name_before)
     # 参照するパスとファイル名を変更
     file_path = os.path.join('./music/', file_name_before)
 
-    #変換後の音声
-    global file_name_after
+    #変換後の音声の名前
     file_name_after = str(file.filename).split(".")[0]
     file_name_after = "converted_" + str(file_name_after) +".wav"
-    print(file_name_after)
+
+    #音声変換
     convert(file_name=file_name_before, file_path=file_path)
 
     #次の外面に遷移する
-    #nameはファイルのパス
+    #fileBは変換前の音声ファイル、fileAは変換後の音声ファイル
     return render_template('post.html', fileB = str(file_name_before), fileA = str(file_name_after))
 
 
