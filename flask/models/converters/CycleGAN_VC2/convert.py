@@ -1,10 +1,16 @@
+# このファイルを直接実行する場合
+# from Generator import Generator
+# import preprocess
+
+# このファイルを直接実行しない場合
 from .Generator import Generator
+from . import preprocess
+
 import torch
 import librosa 
-from . import preprocess
 import numpy as np
-import os 
 import soundfile as sf
+import argparse
 
 # melGAN
 vocoder = torch.hub.load('descriptinc/melgan-neurips', 'load_melgan', model_name='multi_speaker')
@@ -116,6 +122,14 @@ def convert(file_name, file_path, mode):
              subtype="PCM_24")
 
 if __name__ == '__main__':
-    file_name = "sampleAudio.wav"
-    file_path = "/Users/Tanaka/VoiceConversionWebApplication/sample/flask/music/sampleAudio.wav"
-    convert(file_name, file_path)
+
+    parser = argparse.ArgumentParser(
+        description="Conversion settings")
+    
+    parser.add_argument('--file_name', type=str, help="wav file name")
+    parser.add_argument('--file_path', type=str, help="wav file path")
+    parser.add_argument('--mode', type=str, help="which conversion male to female or female to male")
+
+    argv = parser.parse_args()
+    
+    convert(argv.file_name, argv.file_path, argv.mode)

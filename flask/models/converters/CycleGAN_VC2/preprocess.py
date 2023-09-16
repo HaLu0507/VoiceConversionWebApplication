@@ -1,3 +1,9 @@
+# convert.py を直接実行するとき
+# from melGAN.modules import Audio2Mel
+
+# convert.py を直接実行しないとき
+from .melGAN.modules import Audio2Mel
+
 import librosa
 import numpy as np
 import os
@@ -6,7 +12,6 @@ from pprint import pprint
 import librosa.display
 import time
 import torch
-from .melGAN.modules import Audio2Mel
 from librosa.util import normalize
 
 # check the safety : done

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, send_from_directory
 import os 
-from models.converters.CycleGAN_VC2.convert import convert
+from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
 
 app = Flask(__name__)
@@ -83,12 +83,11 @@ def upload_file():
     removalBackgroundNoise(file_path)
 
     # 音声変換
-    convert(file_name=file_name_before, file_path=file_path, mode=mode)
+    selectModel(modelName="CycleGAN_VC2", file_name=file_name_before, file_path=file_path, mode=mode)
 
     #次の外面に遷移する
     #fileBは変換前の音声ファイル、fileAは変換後の音声ファイル
     return render_template('post.html', fileB = str(file_name_before), fileA = str(file_name_after),boolean = True)
-
 
 
 if __name__ == "__main__":
