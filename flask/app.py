@@ -65,6 +65,11 @@ def upload_file():
     #男性から女性:"convertM2W",  女性から男性:"convertW2M"
     mode = request.form.get('sel')
 
+    #変換の手法の文字列
+    #CycleGAN_VC2、MaskCycleGAN_VC
+    method = request.form.get('method')
+
+    print(method)
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
 
