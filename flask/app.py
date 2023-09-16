@@ -37,19 +37,13 @@ def play_before(filename):
     #第二引数が取得したいファイルのファイル名
     return send_from_directory("music", filename)
 
-#変換前の画像をhtmlに送信するメソッド
-@app.route("/mel-sps/original/<path:filename>")
-def show_mel_original(filename):
-    #第一引数が取得したいファイルのディレクトリ名、
-    #第二引数が取得したいファイルのファイル名
-    return send_from_directory("/mel-sps/original", filename)
 
-#変換後の画像をhtmlに送信するメソッド
-@app.route("/mel-sps/converted/<path:filename>")
+#画像をhtmlに送信するメソッド
+@app.route("/mel-sps/<path:filename>")
 def show_mel_converted(filename):
     #第一引数が取得したいファイルのディレクトリ名、
     #第二引数が取得したいファイルのファイル名
-    return send_from_directory("/mel-sps/converted", filename)
+    return send_from_directory("mel-sps", filename)
 
 
 #最初の画面の表示
