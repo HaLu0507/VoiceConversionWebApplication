@@ -1,8 +1,8 @@
 # convert.py を直接実行するとき
-# from melGAN.modules import Audio2Mel
+from melGAN.modules import Audio2Mel
 
 # convert.py を直接実行しないとき
-from .melGAN.modules import Audio2Mel
+# from .melGAN.modules import Audio2Mel
 
 import librosa
 import numpy as np

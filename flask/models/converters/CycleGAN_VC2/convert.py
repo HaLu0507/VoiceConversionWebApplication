@@ -1,10 +1,10 @@
 # このファイルを直接実行する場合
-# from Generator import Generator
-# import preprocess
+from Generator import Generator
+import preprocess
 
 # このファイルを直接実行しない場合
-from .Generator import Generator
-from . import preprocess
+# from .Generator import Generator
+# from . import preprocess
 
 import torch
 import librosa 
@@ -56,21 +56,29 @@ def convert(file_name, file_path, mode):
 
     # 変換した音声を保存するディレクトリ
     # app.py から見た時の相対パスになっている
-    out_dir = "./music/converted_" 
+    # out_dir = "./music/converted_" 
+    out_dir = file_path.split(file_name)[0] + "converted_"
 
     # モデルの生成
     generatorF2M = Generator().to('cpu')
     generatorM2F = Generator().to('cpu')
 
     # モデルのチェックポイントをロードする
-    checkPoint = torch.load("./models/converters/CycleGAN_VC2/_CycleGAN_CheckPoint", torch.device('cpu'))
+    # 直接 convert.py を用いないとき
+    # checkPoint = torch.load("./models/converters/CycleGAN_VC2/_CycleGAN_CheckPoint", torch.device('cpu'))
+    # 直接 convert.py を用いるとき
+    checkPoint = torch.load("./_CycleGAN_CheckPoint", torch.device('cpu'))
+
     generatorF2M.load_state_dict(
         state_dict=checkPoint['model_genA2B_state_dict'])
     generatorM2F.load_state_dict(
         state_dict=checkPoint['model_genB2A_state_dict'])
     
     # Speech Parameters
-    mel_sps_normalization = np.load("./models/converters/CycleGAN_VC2/norm_stats/mel_sps_normalization.npz")
+    # 直接 convert.py を用いないとき
+    # mel_sps_normalization = np.load("./models/converters/CycleGAN_VC2/norm_stats/mel_sps_normalization.npz")
+    # 直接 convert.py を用いるとき
+    mel_sps_normalization = np.load("./norm_stats/mel_sps_normalization.npz")
     female_mel_mean = mel_sps_normalization['mean_A']
     female_mel_std = mel_sps_normalization['std_A']
     male_mel_mean = mel_sps_normalization['mean_B']
@@ -123,13 +131,12 @@ def convert(file_name, file_path, mode):
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(
-        description="Conversion settings")
+    parser = argparse.ArgumentParser(description="Conversion settings")
     
     parser.add_argument('--file_name', type=str, help="wav file name")
     parser.add_argument('--file_path', type=str, help="wav file path")
     parser.add_argument('--mode', type=str, help="which conversion male to female or female to male")
 
     argv = parser.parse_args()
-    
+
     convert(argv.file_name, argv.file_path, argv.mode)

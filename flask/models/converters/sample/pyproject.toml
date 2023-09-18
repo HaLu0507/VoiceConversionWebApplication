@@ -1,17 +1,12 @@
 [tool.poetry]
-name = "cyclegan-vc2"
+name = "sample"
 version = "0.1.0"
 description = ""
 authors = ["Halu <tanaka0507official@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.7.14"
-torch = "1.6.0"
-librosa = "0.9.1"
-pyworld = "^0.3.4"
-matplotlib = "3.5"
-pyyaml = "^6.0.1"
+python = "^3.9"
 
 
 [build-system]

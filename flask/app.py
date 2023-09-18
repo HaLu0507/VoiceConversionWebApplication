@@ -65,15 +65,15 @@ def upload_file():
     if mode == None:
         return render_template('post.html',error = "変換方法を選択してください",boolean = False)
     
-    #保存先のパスとファイル名を指定
-    file_path = os.path.join('./music/', file.filename)
+    #保存先の絶対パスとファイル名を指定
+    file_path = os.path.join(os.getcwd(), 'music/', file.filename)
     #指定した形式で保存
     file.save(file_path)
 
     # 拡張子の変更
     file_name_before = convertExt(file_name_before)
     # 参照するパスとファイル名を変更
-    file_path = os.path.join('./music/', file_name_before)
+    file_path = os.path.join(os.getcwd(), 'music/', file_name_before)
 
     #変換後の音声の名前
     file_name_after = str(file.filename).split(".")[0]

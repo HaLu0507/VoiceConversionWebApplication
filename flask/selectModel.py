@@ -1,5 +1,4 @@
 import os 
-from models.converters.CycleGAN_VC2.convert import convert as CycleGAN_VC2
 
 def selectModel(modelName, file_name, file_path, mode):
     """ 引数modelNameのモデルに音声の変換を行なってもらうメソッド
@@ -13,8 +12,10 @@ def selectModel(modelName, file_name, file_path, mode):
     """
 
     if modelName == "CycleGAN_VC2":
+         # モデルがあるディレクトリに移動
         os.chdir(f"./models/converters/{modelName}/")
+        # 変換を行う
         os.system(f"poetry run python3 convert.py --file_name {file_name} --file_path {file_path} --mode {mode}")
-        os.chdir(f"../../../")
-        print(os.curdir)
+        # 元のディレクトリに戻る
+        os.chdir(f"../../../") 
     
