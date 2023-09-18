@@ -11,11 +11,10 @@ def selectModel(modelName, file_name, file_path, mode):
 
     """
 
-    if modelName == "CycleGAN_VC2":
-         # モデルがあるディレクトリに移動
-        os.chdir(f"./models/converters/{modelName}/")
-        # 変換を行う
-        os.system(f"poetry run python3 convert.py --file_name {file_name} --file_path {file_path} --mode {mode}")
-        # 元のディレクトリに戻る
-        os.chdir(f"../../../") 
+    # モデルがあるディレクトリに移動
+    os.chdir(f"./models/converters/{modelName}/")
+    # 変換を行う
+    os.system(f"poetry run python3 convert.py --file_name {file_name} --file_path {file_path} --mode {mode}")
+    # 元のディレクトリに戻る
+    os.chdir(f"../../../") 
     
