@@ -38,9 +38,19 @@
             </label>
             <br>
 
+            <h2>変換を行う際の手法を選んでください</h2>
+            <label class = "pulldown">
+                <select name="method">
+                    <option disabled selected>選択して下さい</option>
+                    <option value="CycleGAN_VC2">CycleGAN_VC2</option>
+                    <option value="MaskCycleGAN_VC">MaskCycleGAN_VC</option>
+                </select>
+            </label>
+            <br>
+
             <h3>変換するファイルを選んでください</h3>
             <input type="button" id = "fileButton" value="ファイルを選択" onclick="OnButtonClick();"/>
-            <p id="filename"><span>ファイルが選択されていません!</span></p>
+            <p id="filename"><span>ファイルが選択されていません！</span></p>
 
 
             <input type="file" name="file" id="fileUp" accept="audio/*" onchange="inputChange()">
@@ -54,11 +64,13 @@
                 <div class="play">
                     <h2>変換前</h2>
                     <audio src="/music/{{fileB}}" controls></audio>
+                    <img src="/mel-sps/original/1.jpg" width="299" height="257">
                 </div>
 
                 <div class="play">
                     <h2>変換後</h2>
                     <audio src="/music/{{fileA}}" controls></audio>
+                    <img src="/mel-sps/converted/1.jpg" width="299" height="257">
                 </div>
             </p2>
         {% else %}

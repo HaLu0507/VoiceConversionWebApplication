@@ -38,6 +38,14 @@ def play_before(filename):
     return send_from_directory("music", filename)
 
 
+#画像をhtmlに送信するメソッド
+@app.route("/mel-sps/<path:filename>")
+def show_mel_converted(filename):
+    #第一引数が取得したいファイルのディレクトリ名、
+    #第二引数が取得したいファイルのファイル名
+    return send_from_directory("mel-sps", filename)
+
+
 #最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -51,6 +59,11 @@ def upload_file():
     #男性から女性:"convertM2W",  女性から男性:"convertW2M"
     mode = request.form.get('sel')
 
+    #変換の手法の文字列
+    #CycleGAN_VC2、MaskCycleGAN_VC
+    method = request.form.get('method')
+
+    print(method)
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
 
