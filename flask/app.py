@@ -2,8 +2,6 @@ from flask import Flask, render_template, request, send_from_directory
 import os 
 from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
-import ffmpeg
-import subprocess
 
 app = Flask(__name__)
 
@@ -28,8 +26,7 @@ def convertExt(file_name):
     # print(f"パス : {path}")
 
     if ext != "wav": # wav 以外
-        #os.system(f"afconvert -f WAVE -d LEI24 {path}/{name}.{ext} {path}/{name}.wav")
-        subprocess.call('ffmpeg -i' + path + file_name + ' output.wav', shell=True)
+        os.system(f"ffmpeg -y -i {path}/{name}.{ext} {path}/{name}.wav")
 
     return f"{name}.wav"
 
