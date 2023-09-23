@@ -7,6 +7,10 @@ h1 {
     padding: 1rem .5rem;
 }
 
+h2{
+    position: relative;
+    left: 15px;
+}
 h1:after {
     position: absolute;
     bottom: 0;
@@ -33,6 +37,7 @@ h1:after {
 */
 .pulldown {
     position: relative;
+    left: 15px;
 }
 
 .pulldown::before,
@@ -86,6 +91,7 @@ h1:after {
     position: relative;
     height: 2.8em;
     width: 230px;
+    left: 15px;
     border: 2px solid #2589d0;
     background-color: #fff;
     color: #857a7a;
@@ -99,6 +105,7 @@ h1:after {
 #filename{
     top: 7pt;
     left: 10pt;
+    left: 15px;
     position: relative;
     display: inline-block;
 }
@@ -112,6 +119,7 @@ h1:after {
     top: 10pt;
     height: 40px;
     width: 120px;
+    left: 15px;
     border-radius: 20px;
     background-color: #2589d0;
     border: 0px solid #2589d0;
