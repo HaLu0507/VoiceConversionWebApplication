@@ -44,20 +44,21 @@ def normalize_mel(wav):
 
     return mel_normalized
     
-def convert(file_name, file_path, mode):
+def convert(origin_path, mode):
     """ 引数で与えられた音声ファイルを変換し, 変換した音声ファイルを保存するメソッド
         convert()メソッドと異なり正規化を行なっている.
 
     Args:
-        file_name : 音声のファイル名
-        file_path : 変換前の音声のパス
+        origin_path : 変換前の音声のパス(拡張子付き)
         mode : convertM2W if male -> female else convertW2M
     """
 
     # 変換した音声を保存するディレクトリ
     # app.py から見た時の相対パスになっている
     # out_dir = "./music/converted_" 
-    out_dir = file_path.split(file_name)[0] + "converted_"
+    # 絶対パス
+    out_dir = f"{origin_path.split('/origin/')[0]}/converted/{origin_path.split('/')[-1]}"
+    print(f"our dir : {out_dir}")
 
     # モデルの生成
     generatorF2M = Generator().to('cpu')
@@ -91,7 +92,7 @@ def convert(file_name, file_path, mode):
     frame_period = 5.0
 
     # 音声データの読み込み
-    wav, _ = librosa.load(file_path, sr=sampling_rate, mono=True)
+    wav, _ = librosa.load(origin_path, sr=sampling_rate, mono=True)
     wav = preprocess.wav_padding(wav=wav,
                                     sr=sampling_rate,
                                     frame_period=frame_period,
@@ -124,7 +125,7 @@ def convert(file_name, file_path, mode):
     wav_transformed = wav_transformed.to('cpu').detach().numpy().copy() # tensor to numpy
     
     # librosa の output 関数はなかったので, wavファイルへの変換は soundfile モジュールを使用した
-    sf.write(f"{out_dir}{file_name}",
+    sf.write(out_dir,
              wav_transformed,
              sampling_rate,
              subtype="PCM_24")
@@ -133,10 +134,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="Conversion settings")
     
-    parser.add_argument('--file_name', type=str, help="wav file name")
-    parser.add_argument('--file_path', type=str, help="wav file path")
+    parser.add_argument('--origin_path', type=str, help="wav file path")
     parser.add_argument('--mode', type=str, help="which conversion male to female or female to male")
 
     argv = parser.parse_args()
 
-    convert(argv.file_name, argv.file_path, argv.mode)
+    convert(argv.origin_path, argv.mode)

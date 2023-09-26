@@ -2,48 +2,35 @@ from flask import Flask, render_template, request, send_from_directory
 import os 
 from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
+from makeSps import saveSps
 
 app = Flask(__name__)
 
 
-def convertExt(file_name):
-    """ ユーザから得られた音声データの拡張子をwavに変更するメソッド
+def convertWav(file_name):
+    """ ユーザから得られた音声データをwav形式に変換するメソッド
 
     Args:
-        file_name : 音声データのファイル名
+        file_name : 拡張子付きの音声データのファイル名
 
     Returns: 拡張子をwavにしたファイル名
     """
-
-    # 拡張子を取り出す
-    ext = file_name.split('.')[-1]
-    # print(f"拡張子 : {ext}")
-    # ファイル名を取り出す
-    name = file_name.split('.')[0]
-    # print(f"ファイル名 : {name}")
-    # 音声ファイルがあるディレクトリ
-    path = "./music/"
-    # print(f"パス : {path}")
-
-    if ext != "wav": # wav 以外
-        os.system(f"ffmpeg -y -i {path}/{name}.{ext} {path}/{name}.wav")
-
-    return f"{name}.wav"
+    os.system(f"ffmpeg -y -i ./audio/origin/{file_name} ./audio/origin/{file_name.split('.')[0]}.wav")
 
 #音声をhtmlに送信するメソッド
-@app.route("/music/<path:filename>")
+@app.route("/audio/<path:filename>")
 def play_before(filename):
     #第一引数が取得したいファイルのディレクトリ名、
     #第二引数が取得したいファイルのファイル名
-    return send_from_directory("music", filename)
+    return send_from_directory("audio", filename)
 
 
 #画像をhtmlに送信するメソッド
-@app.route("/mel-sps/<path:filename>")
+@app.route("/sps/<path:filename>")
 def show_mel_converted(filename):
     #第一引数が取得したいファイルのディレクトリ名、
     #第二引数が取得したいファイルのファイル名
-    return send_from_directory("mel-sps", filename)
+    return send_from_directory("sps", filename)
 
 
 #最初の画面の表示
@@ -67,11 +54,11 @@ def upload_file():
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
 
-    #保存先のファイル名を指定
-    file_name_before = str(file.filename)
+    #保存先のファイル名を指定(拡張子なし)
+    origin_name = str(file.filename).split('.')[0]
 
     #ファイルを選択しなかったときの処理
-    if file_name_before == "":
+    if origin_name == "":
         return render_template('post.html',error = "ファイルを選択してください",boolean = False)
     
     #modeを何も選択しなかったときの処理
@@ -79,29 +66,29 @@ def upload_file():
         return render_template('post.html',error = "変換方法を選択してください",boolean = False)
     
     #保存先の絶対パスとファイル名を指定
-    file_path = os.path.join(os.getcwd(), 'music/', file.filename)
+    origin_path = os.path.join(os.getcwd(), 'audio/origin/', file.filename)
     #指定した形式で保存
-    file.save(file_path)
+    file.save(origin_path)
 
-    # 拡張子の変更
-    file_name_before = convertExt(file_name_before)
+    if file.filename.split('.')[-1] != "wav": # 拡張子がwavでない場合は変換する
+        convertWav(file.filename)
+
     # 参照するパスとファイル名を変更
-    file_path = os.path.join(os.getcwd(), 'music/', file_name_before)
-
-    #変換後の音声の名前
-    file_name_after = str(file.filename).split(".")[0]
-    file_name_after = "converted_" + str(file_name_after) +".wav"
+    origin_path = os.path.join(os.getcwd(), f"audio/origin/{origin_name}.wav")
 
     # ユーザがアップロードした音声の背景ノイズを除去する
-    removalBackgroundNoise(file_path)
+    removalBackgroundNoise(origin_path)
 
     # 音声変換
-    selectModel(modelName="CycleGAN_VC2", file_name=file_name_before, file_path=file_path, mode=mode)
+    selectModel(modelName=method, origin_path=origin_path, mode=mode)
+
+    # スペクトログラムの画像を求める
+    saveSps(origin_name)
 
     #次の外面に遷移する
     #fileBは変換前の音声ファイル、fileAは変換後の音声ファイル
-    return render_template('post.html', fileB = str(file_name_before), fileA = str(file_name_after),boolean = True)
+    return render_template('post.html', file_name=str(origin_name), boolean=True)
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5008, debug=True)
