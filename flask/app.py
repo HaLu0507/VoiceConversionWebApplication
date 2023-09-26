@@ -63,7 +63,7 @@ def upload_file():
     
     #modeを何も選択しなかったときの処理
     if mode == None:
-        return render_template('post.html',error = "変換方法を選択してください",boolean = False)
+        return render_template('post.html', error="変換方法を選択してください",boolean = False)
     
     #保存先の絶対パスとファイル名を指定
     origin_path = os.path.join(os.getcwd(), 'audio/origin/', file.filename)
