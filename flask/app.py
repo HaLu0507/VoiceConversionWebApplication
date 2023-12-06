@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, jsonify
 import os 
 from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
@@ -6,6 +6,7 @@ from makeSps import saveSps
 
 app = Flask(__name__)
 
+count = 0
 
 def convertWav(file_name):
     """ ユーザから得られた音声データをwav形式に変換するメソッド
@@ -36,12 +37,21 @@ def show_mel_converted(filename):
 #最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('post.html',boolean = False)
+    return render_template('login.html')
 
 
 #音声ファイルを取得するメソッド
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
+    # フォームから送信されたユーザー名とパスワードを取得
+    global count
+    if(count == 0):
+        entered_password = request.form['data1']
+        if(not entered_password == "webApp2023"):
+            return render_template('login.html')
+        else:
+            count += 1
+            return render_template('post.html',boolean = False)
     #変換が男性から女性か女性から男性かの文字列
     #男性から女性:"convertM2W",  女性から男性:"convertW2M"
     mode = request.form.get('sel')
@@ -53,6 +63,8 @@ def upload_file():
     print(method)
     #htmlでアップロードされたファイルを取得
     file = request.files['file']
+    print(request.files['file'])
+
 
     #保存先のファイル名を指定(拡張子なし)
     origin_name = str(file.filename).split('.')[0]
@@ -65,6 +77,7 @@ def upload_file():
     if mode == None:
         return render_template('post.html', error="変換方法を選択してください",boolean = False)
     
+
     #保存先の絶対パスとファイル名を指定
     origin_path = os.path.join(os.getcwd(), 'audio/origin/', file.filename)
     #指定した形式で保存
@@ -91,4 +104,6 @@ def upload_file():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5008, debug=True)
+    app.run(debug=True,host='0.0.0.0',port=5000)
+
+
