@@ -37,6 +37,8 @@ def show_mel_converted(filename):
 #最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    global count
+    count = 0
     return render_template('login.html')
 
 
