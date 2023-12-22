@@ -1,3 +1,0 @@
-python==3.7.3
-torch==1.6.0
-librosa==0.9.1
