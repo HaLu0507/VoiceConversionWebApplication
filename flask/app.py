@@ -40,8 +40,8 @@ def show_mel_converted(filename):
 def index():
     return render_template('login.html')
 
-#音声ファイルを取得するメソッド
-@app.route('/modeSelect', methods=['GET', 'POST'])
+#パスワード認証
+@app.route('/login', methods=['GET', 'POST'])
 def modeSelect():
     # フォームから送信されたユーザー名とパスワードを取得
     try:
@@ -54,12 +54,25 @@ def modeSelect():
     except:
         return render_template('login.html')
 
-#音声ファイルを取得するメソッド
+#音声ファイルで変換
 @app.route('/modeFile', methods=['GET', 'POST'])
 def modeFile():
-            return render_template('post.html',boolean = False)
+    print("file")
+    return render_template('post.html',boolean = False)
 
-#音声ファイルを取得するメソッド
+#音声を録音して変換
+@app.route('/modeRecord', methods=['GET', 'POST'])
+def modeRecord():
+    print("record")
+    return render_template('post.html',boolean = False)
+
+#MOSモード
+@app.route('/modeMOS', methods=['GET', 'POST'])
+def modeMos():
+    print("mos")
+    return render_template('post.html',boolean = False)
+
+#音声ファイルを取得し変換するメソッド
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
         
