@@ -60,11 +60,15 @@ def modeFile():
     print("file")
     return render_template('post.html',boolean = False)
 
+
+
 #音声を録音して変換
 @app.route('/modeRecord', methods=['GET', 'POST'])
 def modeRecord():
     print("record")
     return render_template('post.html',boolean = False)
+
+
 
 #MOSモード
 @app.route('/modeMOS', methods=['GET', 'POST'])
