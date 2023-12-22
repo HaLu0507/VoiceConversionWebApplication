@@ -1,3 +1,4 @@
+# coding: UTF-8
 from flask import Flask, render_template, request, send_from_directory, jsonify
 import os 
 from selectModel import selectModel
@@ -53,7 +54,8 @@ def upload_file():
             return render_template('login.html')
         else:
             count += 1
-            return render_template('post.html',boolean = False)
+            return render_template('post.html', boolean=False)
+        
     #変換が男性から女性か女性から男性かの文字列
     #男性から女性:"convertM2W",  女性から男性:"convertW2M"
     mode = request.form.get('sel')
@@ -106,6 +108,4 @@ def upload_file():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0',port=5000)
-
-
+    app.run(debug=True,host='0.0.0.0',port=5010)
