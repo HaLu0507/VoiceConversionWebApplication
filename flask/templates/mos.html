@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/title.css">
+    <link rel="stylesheet" href="/static/css/mos.css">
+    <title>MOS</title>
+</head>
+<body>
+    <h1>AIを使って音声を変換しよう!!!</h1>
+    <h2>MOSを選択してください</h2>
+    <table>
+        <form action="/NaturalnessMOS" method="post">
+            <button type="submit">自然性(Naturalness)を評価する</button>
+        </form>
+
+        <form action="/SimilarityMOS" method="post">
+            <button type="submit">類似性(Similarity)を評価する</button>
+        </form>
+    </table>
+</body>
+</html>

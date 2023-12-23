@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/title.css">
+    <link rel="stylesheet" href="/static/css/modeSelect.css">
     <title>modeSelect</title>
 </head>
 <body>
     <h1>AIを使って音声を変換しよう!!!</h1>
-    <form action="/modeFile" method="post">
-        <button type="submit">音声ファイルを変換する</button>
-    </form>
+    <h2>音声の取得方法を選択してください</h2>
+    <table>
+        <form action="/modeFile" method="post">
+            <button type="submit">音声ファイルを変換する</button>
+        </form>
 
-    <form action="/modeRecord" method="post">
-        <button type="submit">録音して変換する</button>
-    </form>
-
-    <form action="/modeMOS" method="post">
-        <button type="submit">MOSを行う</button>
-    </form>
+        <form action="/modeRecord" method="post">
+            <button type="submit">録音して変換する</button>
+        </form>
+    </table>
+        <form action="/modeMOS" method="post">
+            <button type="submit">MOSを行う</button>
+        </form>
 </body>
 </html>

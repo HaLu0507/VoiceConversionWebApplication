@@ -54,6 +54,11 @@ def modeSelect():
     except:
         return render_template('login.html')
 
+
+#
+#音声変換方法のモードの選択
+#
+
 #音声ファイルで変換
 @app.route('/modeFile', methods=['GET', 'POST'])
 def modeFile():
@@ -74,7 +79,7 @@ def modeRecord():
 @app.route('/modeMOS', methods=['GET', 'POST'])
 def modeMos():
     print("mos")
-    return render_template('post.html',boolean = False)
+    return render_template('mos.html',boolean = False)
 
 #音声ファイルを取得し変換するメソッド
 @app.route('/upload', methods=['GET', 'POST'])
@@ -129,6 +134,23 @@ def upload_file():
     #次の外面に遷移する
     #fileBは変換前の音声ファイル、fileAは変換後の音声ファイル
     return render_template('post.html', file_name=str(origin_name), boolean=True)
+
+
+#
+#MOSのモードの選択
+#
+
+#Naturalness
+@app.route('/NaturalnessMOS', methods=['GET', 'POST'])
+def naturalnessMOS():
+    print("mos")
+    return render_template('mos.html',boolean = False)
+
+
+#Similarity
+@app.route('/SimilarityMOS', methods=['GET', 'POST'])
+def similarityMos():
+    return render_template('mos.html',boolean = False)
 
 
 if __name__ == "__main__":
