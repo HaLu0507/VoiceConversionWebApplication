@@ -140,7 +140,7 @@ def upload_file():
 #Naturalness
 @app.route('/NaturalnessMOS', methods=['GET', 'POST'])
 def naturalnessMOS():
-    return render_template('naturalnessMOS.html')
+    return render_template('naturalnessMOSSample.html')
 
 
 #Similarity
@@ -154,9 +154,9 @@ def NaturalnessEvaluation():
     model = request.form.get('model')
     audio = request.form.get('audio')
     if  not(model == None) or not(audio == None):
-        return render_template('naturalnessEvaluation.html')
+        return render_template('naturalnessMOSEvaluation.html')
     else:
-        return render_template('naturalnessMOS.html')
+        return render_template('naturalnessMOSSample.html')
 
 #Naturalnessの評価結果
 @app.route('/NaturalnessEvaluationRes', methods=['GET', 'POST'])
@@ -164,7 +164,7 @@ def naturalnessEvaluationRes():
     for i in range(5):
         p = request.form.get('test' + str(i+1))
         if(p == None):
-            return render_template('naturalnessEvaluation.html')
+            return render_template('naturalnessMOSEvaluation.html')
         print(p)
     return render_template('login.html')
 
