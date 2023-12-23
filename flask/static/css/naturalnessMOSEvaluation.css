@@ -23,6 +23,7 @@
 * submitボタンの設定
 */
 button[type="submit"] {
+    position: relative; /* 今の位置を基準 */
     width: 10%;
     padding: 10px;
     margin: 10px;
