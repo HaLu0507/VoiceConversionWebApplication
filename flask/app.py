@@ -153,13 +153,14 @@ def similarityMos():
 def NaturalnessEvaluation():
     model = request.form.get('model')
     audio = request.form.get('audio')
-    print(":"+model)
-    print(audio)
-    return render_template('naturalnessEvaluation.html')
+    if  not(model == None) or not(audio == None):
+        return render_template('naturalnessEvaluation.html')
+    else:
+        return render_template('naturalnessMOS.html')
 
 #Naturalnessの評価結果
-@app.route('/aaa', methods=['GET', 'POST'])
-def NaturalnessEvaluationRes():
+@app.route('/NaturalnessEvaluationRes', methods=['GET', 'POST'])
+def naturalnessEvaluationRes():
     for i in range(5):
         p = request.form.get('test' + str(i+1))
         if(p == None):
