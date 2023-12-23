@@ -40,6 +40,7 @@
         </div>
     </table>
     <h2>設定 (指導者の指示に従ってください)</h2>
+    <form action="/NaturalnessEvaluation" method="post">
     モデル
     <label class = "pulldown">
         <select name="model">
@@ -53,14 +54,12 @@
 
     音声
     <label class = "pulldown">
-        <select name="model">
+        <select name="audio">
             <option disabled selected>選択して下さい</option>
             <option value="CycleGAN_VC2">CycleGAN_VC2</option>
             <option value="MaskCycleGAN_VC">MaskCycleGAN_VC</option>
         </select>
     </label>
-
-    <form action="/NaturalnessEvaluation" method="post">
         <button type="submit">評価する</button>
     </form>
 </body>

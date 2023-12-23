@@ -151,6 +151,10 @@ def similarityMos():
 #Naturalnessで評価画面へ
 @app.route('/NaturalnessEvaluation', methods=['GET', 'POST'])
 def NaturalnessEvaluation():
+    model = request.form.get('model')
+    audio = request.form.get('audio')
+    print(":"+model)
+    print(audio)
     return render_template('naturalnessEvaluation.html')
 
 #Naturalnessの評価結果
