@@ -1,7 +1,7 @@
 # 音声ファイルなどのデータはgitに追加しないように設定
-# *.wav
-# *.m4a
-# *.jpeg
+*.wav
+*.m4a
+*.jpeg
 
 # モデルのチェックポイントもgitに追加しないように設定
 /flask/models/converters/CycleGAN_VC2/_CycleGAN_CheckPoint
