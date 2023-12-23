@@ -155,7 +155,7 @@ def NaturalnessEvaluation():
 
 #Naturalnessの評価結果
 @app.route('/aaa', methods=['GET', 'POST'])
-def aaa():
+def NaturalnessEvaluationRes():
     for i in range(5):
         p = request.form.get('test' + str(i+1))
         if(p == None):
