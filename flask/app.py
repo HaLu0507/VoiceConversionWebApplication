@@ -79,7 +79,7 @@ def modeRecord():
 @app.route('/modeMOS', methods=['GET', 'POST'])
 def modeMos():
     print("mos")
-    return render_template('mos.html',boolean = False)
+    return render_template('mosSelect.html',boolean = False)
 
 #音声ファイルを取得し変換するメソッド
 @app.route('/upload', methods=['GET', 'POST'])
@@ -143,14 +143,25 @@ def upload_file():
 #Naturalness
 @app.route('/NaturalnessMOS', methods=['GET', 'POST'])
 def naturalnessMOS():
-    print("mos")
-    return render_template('mos.html',boolean = False)
+    return render_template('naturalnessMOS.html')
 
 
 #Similarity
 @app.route('/SimilarityMOS', methods=['GET', 'POST'])
 def similarityMos():
-    return render_template('mos.html',boolean = False)
+    return render_template('mosSelect.html')
+
+#Naturalnessで評価
+@app.route('/NaturalnessEvaluation', methods=['GET', 'POST'])
+def NaturalnessEvaluation():
+    return render_template('naturalnessEvaluation.html')
+
+#Naturalness
+@app.route('/aaa', methods=['GET', 'POST'])
+def aaa():
+    p = request.form.get('test1')
+    print(p)
+    return render_template('naturalnessEvaluation.html')
 
 
 if __name__ == "__main__":
