@@ -38,23 +38,47 @@ def show_mel_converted(filename):
 #最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    global count
-    count = 0
     return render_template('login.html')
 
-
-#音声ファイルを取得するメソッド
-@app.route('/upload', methods=['GET', 'POST'])
-def upload_file():
+#パスワード認証
+@app.route('/login', methods=['GET', 'POST'])
+def modeSelect():
     # フォームから送信されたユーザー名とパスワードを取得
-    global count
-    if(count == 0):
+    try:
         entered_password = request.form['data1']
         if(not entered_password == "webApp2023"):
             return render_template('login.html')
         else:
-            count += 1
-            return render_template('post.html', boolean=False)
+            return render_template('modeSelect.html')
+
+    except:
+        return render_template('login.html')
+
+#音声ファイルで変換
+@app.route('/modeFile', methods=['GET', 'POST'])
+def modeFile():
+    print("file")
+    return render_template('post.html',boolean = False)
+
+
+
+#音声を録音して変換
+@app.route('/modeRecord', methods=['GET', 'POST'])
+def modeRecord():
+    print("record")
+    return render_template('post.html',boolean = False)
+
+
+
+#MOSモード
+@app.route('/modeMOS', methods=['GET', 'POST'])
+def modeMos():
+    print("mos")
+    return render_template('post.html',boolean = False)
+
+#音声ファイルを取得し変換するメソッド
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
         
     #変換が男性から女性か女性から男性かの文字列
     #男性から女性:"convertM2W",  女性から男性:"convertW2M"
@@ -108,4 +132,4 @@ def upload_file():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0',port=5010)
+    app.run(debug=True,host='0.0.0.0',port=5000)
