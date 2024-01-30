@@ -26,7 +26,7 @@ button[type="submit"] {
     position: relative; /* 今の位置を基準 */
     width: 10%;
     padding: 10px;
-    margin: 10px;
+    margin: 30px;
     background-color: #2589d0;
     color: #ffffff;
     border: 10px;

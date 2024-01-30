@@ -69,30 +69,32 @@ def modeFile():
 #音声を録音して変換
 @app.route('/modeRecord', methods=['GET', 'POST'])
 def modeRecord():
-    return render_template('post.html',boolean = False)
+    return render_template('modeSelect.html')
 
 
 
 #MOSモード
 @app.route('/modeMOS', methods=['GET', 'POST'])
 def modeMos():
-    return render_template('mosSelect.html',boolean = False)
+    return render_template('mosSelect.html')
 
 #音声ファイルを取得し変換するメソッド
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
-        
-    #変換が男性から女性か女性から男性かの文字列
-    #男性から女性:"convertM2W",  女性から男性:"convertW2M"
-    mode = request.form.get('sel')
+    try:
+        #変換が男性から女性か女性から男性かの文字列
+        #男性から女性:"convertM2W",  女性から男性:"convertW2M"
+        mode = request.form.get('sel')
 
-    #変換の手法の文字列
-    #CycleGAN_VC2、MaskCycleGAN_VC
-    method = request.form.get('method')
+        #変換の手法の文字列
+        #CycleGAN_VC2、MaskCycleGAN_VC
+        method = request.form.get('method')
 
-    print(method)
-    #htmlでアップロードされたファイルを取得
-    file = request.files['file']
+        print(method)
+        #htmlでアップロードされたファイルを取得
+        file = request.files['file']
+    except:
+        return render_template('post.html',error = "正しくアクセスしてください",boolean = False)
     print(request.files['file'])
 
 
@@ -161,11 +163,12 @@ def NaturalnessEvaluation():
 #Naturalnessの評価結果
 @app.route('/NaturalnessEvaluationRes', methods=['GET', 'POST'])
 def naturalnessEvaluationRes():
+    mosNaturalnessRes = []
     for i in range(5):
         p = request.form.get('test' + str(i+1))
         if(p == None):
             return render_template('naturalnessMOSEvaluation.html')
-        print(p)
+        mosNaturalnessRes.append(p)
     return render_template('login.html')
 
 
