@@ -31,20 +31,15 @@
 
             <h2>変換するファイルを選んでください</h2>
 
+            <p>今回は静的なwebページなのでファイルの選択はできません</p>
+
             <input disabled type="file" name="file" id="fileUp" accept="audio/*">
             <br>
-            <button onclick="redirectToSelectedPage()">Go</button>
+            <button onclick="redirectToSelectedPage()" id ="go">変換</button>
+            <br>
         
-        <script>
-            function redirectToSelectedPage() {
-                var selectedChange = document.getElementById("sel").value;
-                if (selectedChange === "convertM2W") {
-                window.location.href = "M2F.html";
-                } else if (selectedChange === "convertW2M") {
-                window.location.href = "F2M.html";
-                }
-            }
-        </script>   
+
+        <h2 id = warning>音量が大きいので注意してください</h2>
 
         <p2 class="ok">
             <div class="play">
@@ -60,4 +55,15 @@
             </div>
         </p2>
 
+        <script>
+            function redirectToSelectedPage() {
+                var selectedChange = document.getElementById("sel").value;
+                if (selectedChange === "convertM2W") {
+                window.location.href = "M2F.html";
+                } else if (selectedChange === "convertW2M") {
+                window.location.href = "F2M.html";
+                }
+            }
+        </script>   
+    </body>
 </html>
