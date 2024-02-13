@@ -1,0 +1,39 @@
+input[type="text"] {
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit1"] {
+  width: 10%;
+  padding: 10px;
+  position: relative;
+  top: 10px; 
+  background-color: #2589d0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+button[type="submit2"] {
+  width: 10%;
+  padding: 10px;
+  position: relative;
+  left: 1280px; 
+  background-color: #2589d0;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit1"]:hover {
+    background-color: #0000FF;
+  }
+  button[type="submit2"]:hover {
+    background-color: #0000FF;
+  }

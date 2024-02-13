@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" href="../css/title.css">
+        <link rel="stylesheet" href="../css/post.css">
+        <title>音声変換</title>
+        <script>
+            //ファイルを選択するボタンを押したときの処理
+            function OnButtonClick() {
+                document.querySelector("#fileUp").click();
+            }
+
+            //ファイルが選択されたときの処理
+            function inputChange(){
+                let element = document.querySelector("#fileUp");
+                document.querySelector("#filename").innerText = (element.files[0].name);
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <h1>AIを使って音声を変換しよう!!!</h1>
+        <form method="post" action="./post2.html" enctype="multipart/form-data">
+            
+            <h2>男性から女性に変換するか、女性から男性に変換するか選んでください</h2>
+            <label class = "pulldown">
+                <select name="sel">
+                    <option disabled selected>選択して下さい</option>
+                    <option value="convertM2W">男性から女性に変換</option>
+                    <option value="convertW2M">女性から男性に変換</option>
+                </select>
+            </label>
+            <br>
+
+            <h2>変換を行う際の手法を選んでください</h2>
+            <label class = "pulldown">
+                <select name="method">
+                    <option disabled selected>選択して下さい</option>
+                    <option value="CycleGAN_VC2">CycleGAN_VC2</option>
+                    <option value="MaskCycleGAN_VC">MaskCycleGAN_VC</option>
+                </select>
+            </label>
+            <br>
+
+            <h2>変換するファイルを選んでください</h2>
+
+
+            <input type="file" name="file" id="fileUp" accept="audio/*" onchange="inputChange()">
+            <br>
+            <input type="submit" value="アップロード" id = "submitButton">
+            
+        </form>        
+
+            <p2 class="ok">
+                <div class="play">
+                    <h2>変換前</h2>
+                    <audio src="/audio/origin/{{file_name}}.wav" controls></audio>
+                    <img src="/sps/origin/{{file_name}}.jpeg" width="299" height="257">
+                </div>
+
+                <div class="play">
+                    <h2>変換後</h2>
+                    <audio src="/audio/origin/{{file_name}}.wav" controls></audio>
+                    <img src="/sps/converted/{{file_name}}.jpeg" width="299" height="257">
+                </div>
+            </p2>
+
+</html>
