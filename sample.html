@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toggle Page</title>
+</head>
+<body>
+
+<label for="toggle">Select Page:</label>
+<select id="toggle">
+  <option value="A">A</option>
+  <option value="B">B</option>
+</select>
+
+<button onclick="redirectToSelectedPage()">Go</button>
+
+<script>
+function redirectToSelectedPage() {
+  var selectedOption = document.getElementById("toggle").value;
+  if (selectedOption === "A") {
+    window.location.href = "A.html";
+  } else if (selectedOption === "B") {
+    window.location.href = "B.html";
+  }
+}
+</script>
+
+</body>
+</html>
