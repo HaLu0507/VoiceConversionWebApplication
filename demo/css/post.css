@@ -8,7 +8,7 @@ h2{
 /*
 警告文の
 */
-#error{
+#warning{
     color: red;
 }
 
@@ -90,6 +90,7 @@ h2{
     position: relative;
     display: inline-block;
 }
+
 
 
 /*
