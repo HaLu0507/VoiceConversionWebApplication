@@ -95,7 +95,7 @@ h2{
 /*
 送信ボタンの
 */
-#submitButton {
+#go {
     position: relative;
     top: 10pt;
     height: 40px;
@@ -108,7 +108,7 @@ h2{
     font-size: 1em;
 }
 
-#submitButton:hover {
+#go:hover {
     background-color: #0000FF;
 }
 
