@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" href="../css/title.css">
+        <link rel="stylesheet" href="../css/post.css">
+        <title>音声変換</title>
+    </head>
+
+    <body>
+        <h1>AIを使って音声を変換しよう!!!</h1>
+            
+            <h2>男性から女性に変換するか、女性から男性に変換するか選んでください</h2>
+            <label for="toggle" class = toggle>
+                <select id="sel">
+                    <option disabled selected>選択して下さい</option>
+                    <option value="convertM2W">男性から女性に変換</option>
+                    <option value="convertW2M">女性から男性に変換</option>
+                </select>
+            </label>
+            <br>
+
+            <h2>変換を行う際の手法を選んでください</h2>
+            <label for="toggle" class = toggle>
+                <select id="method">
+                <option value="CycleGAN_VC2">CycleGAN_VC2</button>
+                </select>
+            </label>
+            <br>
+
+            <h2>変換するファイルを選んでください</h2>
+
+
+            <input type="file" name="file" id="fileUp" accept="audio/*">
+            <br>
+            <button onclick="redirectToSelectedPage()">Go</button>
+        
+        <script>
+            function redirectToSelectedPage() {
+                var selectedChange = document.getElementById("sel").value;
+                if (selectedChange === "convertM2W") {
+                window.location.href = "M2F.html";
+                } else if (selectedChange === "convertW2M") {
+                window.location.href = "F2M.html";
+                }
+            }
+        </script>   
+
+        <p2 class="ok">
+            <div class="play">
+                <h2>変換前</h2>
+                <audio src="../audio/origin/ma.wav" controls></audio>
+                <img src="../sps/origin/ma.jpeg" width="299" height="257">
+            </div>
+
+            <div class="play">
+                <h2>変換後</h2>
+                <audio src="../audio/converted/cyclegan_vc2_ma.wav" controls></audio>
+                <img src="../sps/converted/cyclegan_vc2_ma.jpeg" width="299" height="257">
+            </div>
+        </p2>
+
+</html>
