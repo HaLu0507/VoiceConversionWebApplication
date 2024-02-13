@@ -36,17 +36,7 @@
             <br>
             <button onclick="redirectToSelectedPage()" id ="go">Go</button>
             <br>
-        <h2 id = warning>音量が大きいので注意してください</h2>
-        <script>
-            function redirectToSelectedPage() {
-                var selectedChange = document.getElementById("sel").value;
-                if (selectedChange === "convertM2W") {
-                window.location.href = "M2F.html";
-                } else if (selectedChange === "convertW2M") {
-                window.location.href = "F2M.html";
-                }
-            }
-        </script>   
+        <h2 id = warning>音量が大きいので注意してください</h2> 
 
         <p2 class="ok">
             <div class="play">
@@ -61,5 +51,15 @@
                 <img src="../sps/converted/cyclegan_vc2_fe.jpeg" width="299" height="257">
             </div>
         </p2>
-
+        <script>
+            function redirectToSelectedPage() {
+                var selectedChange = document.getElementById("sel").value;
+                if (selectedChange === "convertM2W") {
+                window.location.href = "M2F.html";
+                } else if (selectedChange === "convertW2M") {
+                window.location.href = "F2M.html";
+                }
+            }
+        </script>  
+    </body>
 </html>

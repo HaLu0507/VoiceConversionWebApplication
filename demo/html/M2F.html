@@ -34,22 +34,11 @@
 
             <input type="file" name="file" id="fileUp" accept="audio/*">
             <br>
-            <button onclick="redirectToSelectedPage()" id ="go">Go</button>
+            <button onclick="redirectToSelectedPage()" id ="go">変換</button>
             <br>
         
 
         <h2 id = warning>音量が大きいので注意してください</h2>
-        
-        <script>
-            function redirectToSelectedPage() {
-                var selectedChange = document.getElementById("sel").value;
-                if (selectedChange === "convertM2W") {
-                window.location.href = "M2F.html";
-                } else if (selectedChange === "convertW2M") {
-                window.location.href = "F2M.html";
-                }
-            }
-        </script>   
 
         <p2 class="ok">
             <div class="play">
@@ -65,4 +54,15 @@
             </div>
         </p2>
 
+        <script>
+            function redirectToSelectedPage() {
+                var selectedChange = document.getElementById("sel").value;
+                if (selectedChange === "convertM2W") {
+                window.location.href = "M2F.html";
+                } else if (selectedChange === "convertW2M") {
+                window.location.href = "F2M.html";
+                }
+            }
+        </script>   
+    </body>
 </html>
