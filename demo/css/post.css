@@ -16,19 +16,19 @@ h2{
 /*
 プルダウンの
 */
-.pulldown {
+.toggle {
     position: relative;
     left: 15px;
 }
 
-.pulldown::before,
-.pulldown::after {
+.toggle::before,
+.toggle::after {
     position: absolute;
     content: '';
     pointer-events: none;
 }
 
-.pulldown::before {
+.toggle::before {
     right: 0;
     display: inline-block;
     width: 2.8em;
@@ -38,7 +38,7 @@ h2{
     content: '';
 }
 
-.pulldown::after {
+.toggle::after {
     position: absolute;
     top: 50%;
     right: 1.4em;
@@ -50,7 +50,7 @@ h2{
     content: '';
 }
 
-.pulldown select {
+.toggle select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
