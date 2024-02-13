@@ -40,13 +40,13 @@
         <p2 class="ok">
             <div class="play">
                 <h2>変換前</h2>
-                <audio src="../audio/origin/fe.wav" controls></audio>
+                <audio id="org_audio" src="../audio/origin/fe.wav" controls></audio>
                 <img src="../sps/origin/fe.jpeg" width="299" height="257">
             </div>
 
             <div class="play">
                 <h2>変換後</h2>
-                <audio src="../audio/converted/cyclegan_vc2_fe.wav" controls></audio>
+                <audio id="conveted_audio" src="../audio/converted/cyclegan_vc2_fe.wav" controls></audio>
                 <img src="../sps/converted/cyclegan_vc2_fe.jpeg" width="299" height="257">
             </div>
         </p2>
@@ -59,6 +59,12 @@
                 window.location.href = "F2M.html";
                 }
             }
+
+            // 初期音量の設定
+            var org_audio = document.getElementById("org_audio")
+            org_audio.volume = 0.1;
+            var converted_audio = document.getElementById("converted_audio")
+            converted_audio.volume = 0.1;
         </script>  
     </body>
 </html>
