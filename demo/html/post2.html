@@ -6,19 +6,6 @@
         <link rel="stylesheet" href="../css/title.css">
         <link rel="stylesheet" href="../css/post.css">
         <title>音声変換</title>
-        <script>
-            //ファイルを選択するボタンを押したときの処理
-            function OnButtonClick() {
-                document.querySelector("#fileUp").click();
-            }
-
-            //ファイルが選択されたときの処理
-            function inputChange(){
-                let element = document.querySelector("#fileUp");
-                document.querySelector("#filename").innerText = (element.files[0].name);
-            }
-
-        </script>
     </head>
 
     <body>
@@ -48,7 +35,7 @@
             <h2>変換するファイルを選んでください</h2>
 
 
-            <input type="file" name="file" id="fileUp" accept="audio/*" onchange="inputChange()">
+            <input type="file" name="file" id="fileUp" accept="audio/*">
             <br>
             <input type="submit" value="アップロード" id = "submitButton">
             
