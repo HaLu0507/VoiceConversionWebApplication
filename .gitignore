@@ -11,4 +11,4 @@
 
 # pycacheの内容
 *.pyc
-__pycache__/
+**/__pycache__/**
