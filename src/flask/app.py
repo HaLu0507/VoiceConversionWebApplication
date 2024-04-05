@@ -46,7 +46,7 @@ def modeSelect():
     # フォームから送信されたユーザー名とパスワードを取得
     try:
         entered_password = request.form['data1']
-        if(not entered_password == "webApp2023"):
+        if(not entered_password == "webapp2023"):
             return render_template('login.html')
         else:
             return render_template('modeSelect.html')
@@ -173,4 +173,4 @@ def naturalnessEvaluationRes():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0',port=5000)
+    app.run(debug=True,host='0.0.0.0',port=5009)

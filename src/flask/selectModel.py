@@ -15,5 +15,4 @@ def selectModel(modelName, origin_path, mode):
     # 変換を行う
     os.system(f"poetry run python3 convert.py --origin_path {origin_path} --mode {mode}")
     # 元のディレクトリに戻る
-    os.chdir(f"../../../") 
-    
+    os.chdir(f"../../../")
