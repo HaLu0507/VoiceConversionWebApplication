@@ -1,0 +1,25 @@
+version: '3'
+services:
+  vc_web_app:
+    restart: always
+    build: .
+    ports:
+      - 5009:5009
+    image: vc_web_app_img
+    container_name: vc_web_app_ctr
+    working_dir: /src
+    tty: true
+    volumes:
+      - ./src:/src
+    
+    # gpuを用いる場合は以下のコメントを外す
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    # environment:
+    #   - NVIDIA_VISIBLE_DEVICES=all
+    #   - NVIDIA_DRIVER_CAPAVILITIES=all
