@@ -18,3 +18,19 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0000FF;
 }
+
+audio 
+{ 
+    width: 280px; height: 60px; margin: 20px;
+}
+
+.sound
+{
+    float: left;
+}
+
+
+.eval_con
+{
+    display:block;
+}

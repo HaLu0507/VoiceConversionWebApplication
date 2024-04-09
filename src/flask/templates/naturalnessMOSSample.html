@@ -11,35 +11,44 @@
     <h1>音声の自然性(Naturalness)を評価する</h1>
     <h2>評価方法</h2>
     ・以下の評価基準を元に1~5段階で評価する<br>
-    ・発話内容に違和感がないか？<br>
-    ・人間っぽい声か(機械音でないか？)<br>
+    　・発話内容に違和感がないか？<br>
+    　・人間っぽい声か(機械音でないか？)<br>
+    <table class = test>
     <h2>例</h2>
-    <table>
-        <div>
+    <br>
+    <div class = sound>
         <h3>1. 音声を聴く</h3>
         <audio src="/audio/mos/sample.wav" controls></audio>
         </div>
 
+        <div class = eval>
+            <h3>2. 評価する</h3>
+            <label for="sample5" class="eval_con">
+                <input type="radio"> 非常に良い
+            </label>
 
-        <div>
-        <h3>2. 評価する</h3>
-            <input type="radio" id="sample5" name="contact" value="5" />
-            <label for="sample5">非常に良い</label>
+            <label for="sample4" class="eval_con">
+                <input type="radio"> 良い
+            </label>
 
-            <input type="radio" id="sample4" name="contact" value="4" />
-            <label for="sample4">良い</label>
 
-            <input type="radio" id="sample3" name="contact" value="3" />
-            <label for="sample3">普通</label>
-      
-            <input type="radio" id="sample2" name="contact" value="2" />
-            <label for="sample2">悪い</label>
+            <label for="sample3" class="eval_con">
+                <input type="radio"> 普通
+            </label>
 
-            <input type="radio" id="sample1" name="contact" value="1" />
-            <label for="sample1">非常に悪い</label>
-            
+            <label for="sample2" class="eval_con">
+                <input type="radio"> 悪い
+            </label>
+
+            <label for="sample1" class="eval_con">
+                <input type="radio"> 非常に悪い
+            </label>
         </div>
     </table>
+
+    <br>
+
+
     <h2>設定 (指導者の指示に従ってください)</h2>
     <form action="/NaturalnessEvaluation" method="post">
     モデル
