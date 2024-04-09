@@ -105,10 +105,13 @@ def upload_file():
     if mode == None:
         return render_template('post.html', error="変換方法を選択してください",boolean = False)
     
+    # もしディレクトリがない場合、ディレクトリを作成
+    os.makedirs(os.path.join(os.getcwd(), 'audio/origin/'), exist_ok=True)
+    os.makedirs(os.path.join(os.getcwd(), 'audio/converted/'), exist_ok=True)
 
-    #保存先の絶対パスとファイル名を指定
+    # 保存先の絶対パスとファイル名を指定
     origin_path = os.path.join(os.getcwd(), 'audio/origin/', file.filename)
-    #指定した形式で保存
+    # 指定した形式で保存
     file.save(origin_path)
 
     if file.filename.split('.')[-1] != "wav": # 拡張子がwavでない場合は変換する
