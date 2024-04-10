@@ -5,7 +5,8 @@ RUN apt update \
     git\
     python3.10\
     python3-pip \
-    curl
+    curl \
+    ffmpeg
 
 COPY requirements.txt /tmp/
 RUN pip install --no-cache-dir -r /tmp/requirements.txt

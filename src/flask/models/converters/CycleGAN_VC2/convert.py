@@ -15,6 +15,9 @@ import argparse
 # melGAN
 vocoder = torch.hub.load('descriptinc/melgan-neurips', 'load_melgan', model_name='multi_speaker')
 
+def get_device():
+    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 def normalize_mel(wav):
     """ 音声をメルスペクトログラムに変換し, 正規化するメソッド
 
@@ -60,9 +63,12 @@ def convert(origin_path, mode):
     out_dir = f"{origin_path.split('/origin/')[0]}/converted/{origin_path.split('/')[-1]}"
     print(f"our dir : {out_dir}")
 
+    # device の取得
+    device = get_device()
+
     # モデルの生成
-    generatorF2M = Generator().to('cpu')
-    generatorM2F = Generator().to('cpu')
+    generatorF2M = Generator().to(device)
+    generatorM2F = Generator().to(device)
 
     # モデルのチェックポイントをロードする
     # 直接 convert.py を用いないとき
@@ -99,7 +105,7 @@ def convert(origin_path, mode):
                                     multiple=4)
     
     # 正規化されたメルスペクトログラムを取得
-    mel_normalized = normalize_mel(wav)
+    mel_normalized = normalize_mel(wav).to(device)
 
     # conversion
     # converted_mel_normalized : torch(1, Hz, Time)
