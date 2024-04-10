@@ -8,3 +8,5 @@
 
 # poetryによって作成された環境(.venv)もgitに追加しないように設定
 /flask/models/converters/CycleGAN_VC2/.venv
+
+**/__pycache__/**
