@@ -6,16 +6,37 @@ input[type="text"] {
   border-radius: 4px;
 }
 
-button[type="submit"] {
+#login{
   width: 20%;
   padding: 10px;
   background-color: #2589d0;
+  margin-bottom: 12px;
   color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
+#login:hover {
     background-color: #0000FF;
-  }
+}
+
+#signup{
+  width: 20%;
+  padding: 10px;
+  text-align:center;
+  background-color: #2589d0;
+  margin-bottom: 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#signup:hover {
+    background-color: #0000FF;
+}
+
+.center{
+  text-align: center;
+}

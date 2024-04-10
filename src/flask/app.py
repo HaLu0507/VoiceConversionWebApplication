@@ -54,6 +54,16 @@ def modeSelect():
     except:
         return render_template('login.html')
 
+#サインアップ
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    # 
+    return render_template('signup.html')
+
+#サインアップ
+@app.route('/modeSelect2', methods=['GET', 'POST'])
+def modeSelect2():
+    return render_template('modeSelect.html')
 
 #
 #音声変換方法のモードの選択
