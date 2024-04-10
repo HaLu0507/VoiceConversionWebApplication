@@ -38,7 +38,7 @@ def show_mel_converted(filename):
 #最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('login.html')
+    return render_template('index.html')
 
 #パスワード認証
 @app.route('/login', methods=['GET', 'POST'])
