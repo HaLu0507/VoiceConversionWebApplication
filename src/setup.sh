@@ -10,4 +10,5 @@ apt-get install -y make build-essential libssl-dev zlib1g-dev \
 # CycleGAN-VC2の設定
 cd ./flask/models/converters/CycleGAN_VC2
 pyenv install 3.7.14
+poetry lock --no-update
 poetry install 

@@ -3,6 +3,7 @@ import numpy as np
 from scipy.io import wavfile
 from PIL import Image
 import matplotlib.pyplot as plt
+import os 
 
 def makeSpectrogram(x, sr, frame_shift=0, n_fft=2048, isLog=True, isPower=False):
     
@@ -34,6 +35,10 @@ def saveSps(file_name):
 
     origin_path = f"./audio/origin/{file_name}.wav"
     converted_path = f"./audio/converted/{file_name}.wav"
+
+    # スペクトログラムを保存するディレクトリを作成
+    os.makedirs("./sps/origin/", exist_ok=True)
+    os.makedirs("./sps/converted/", exist_ok=True)
 
     origin_sp_path = f"./sps/origin/{file_name}.jpeg"
     converted_sp_path = f"./sps/converted/{file_name}.jpeg"
