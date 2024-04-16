@@ -4,7 +4,7 @@
 *.jpeg
 
 # モデルのチェックポイントもgitに追加しないように設定
-/flask/models/converters/CycleGAN_VC2/_CycleGAN_CheckPoint
+/src/flask/models/converters/CycleGAN_VC2/_CycleGAN_CheckPoint
 
 # poetryによって作成された環境(.venv)もgitに追加しないように設定
 /flask/models/converters/CycleGAN_VC2/.venv
@@ -16,4 +16,5 @@
 
 # mysqlの内容
 !/docker-mysql/DB/app_db/users.ibd
-/docker-mysql/DB/
+!/docker-mysql/DB
+/docker-mysql/DB/*
