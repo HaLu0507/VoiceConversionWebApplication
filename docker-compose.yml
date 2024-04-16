@@ -1,7 +1,6 @@
 version: '3'
 services:
-  vc_web_app:
-    restart: always
+  vc_web_app: 
     build: .
     ports:
       - 5009:5009
@@ -23,3 +22,20 @@ services:
     # environment:
     #   - NVIDIA_VISIBLE_DEVICES=all
     #   - NVIDIA_DRIVER_CAPAVILITIES=all
+  
+  db:
+    build: ./docker-mysql/
+    volumes:
+      # - ./DB:/docker-entrypoint-initdb.d
+      - ./docker-mysql/DB:/var/lib/mysql
+    ports:
+      - 5010:5010
+    image: mysql:8.0.36-debian
+    container_name: db
+    # working_dir: /src
+    tty: true
+    environment:
+      - MYSQL_DATABASE=app_db
+      - MYSQL_USER=username
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=root_password

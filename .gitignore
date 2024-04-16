@@ -13,3 +13,7 @@
 *.pyc
 >>>>>>> origin/top_page
 **/__pycache__/**
+
+# mysqlの内容
+!/docker-mysql/DB/app_db/users.ibd
+/docker-mysql/DB/
