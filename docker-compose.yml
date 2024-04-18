@@ -24,18 +24,17 @@ services:
     #   - NVIDIA_DRIVER_CAPAVILITIES=all
   
   db:
-    build: ./docker-mysql/
     volumes:
-      # - ./DB:/docker-entrypoint-initdb.d
-      - ./docker-mysql/DB:/var/lib/mysql
+      - ./docker-mysql/DB:/docker-entrypoint-initdb.d
+      - ./docker-mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 5010:5010
     image: mysql:8.0.36-debian
     container_name: db
-    # working_dir: /src
     tty: true
     environment:
       - MYSQL_DATABASE=app_db
       - MYSQL_USER=username
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=root_password
+    command: mysqld
