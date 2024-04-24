@@ -5,9 +5,20 @@ from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
 from makeSps import saveSps
 
+# python で mysql を使用するためのモジュール
+import mysql.connector as mydb
+
 app = Flask(__name__)
 
 count = 0
+
+conn = mydb.connect(
+    host='db',
+    port='3306',
+    user='username',
+    password='password',
+    database='app_db'
+)
 
 def convertWav(file_name):
     """ ユーザから得られた音声データをwav形式に変換するメソッド
