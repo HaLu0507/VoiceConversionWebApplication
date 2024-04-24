@@ -5,10 +5,17 @@ from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
 from makeSps import saveSps
 
+from blueprints.login_signup.view import login_signup
+# from blueprints.login_signup.view import login_signup
+
 # python で mysql を使用するためのモジュール
 import mysql.connector as mydb
 
 app = Flask(__name__)
+app.register_blueprint(login_signup)
+# app.register_blueprint(login_signup)
+
+
 
 count = 0
 
@@ -51,30 +58,8 @@ def show_mel_converted(filename):
 def index():
     return render_template('index.html')
 
-#パスワード認証
-@app.route('/login', methods=['GET', 'POST'])
-def modeSelect():
-    # フォームから送信されたユーザー名とパスワードを取得
-    try:
-        entered_password = request.form['data1']
-        if(not entered_password == "webapp2023"):
-            return render_template('login.html')
-        else:
-            return render_template('modeSelect.html')
 
-    except:
-        return render_template('login.html')
 
-#サインアップ
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    # 
-    return render_template('signup.html')
-
-#サインアップ
-@app.route('/modeSelect2', methods=['GET', 'POST'])
-def modeSelect2():
-    return render_template('modeSelect.html')
 
 #
 #音声変換方法のモードの選択
