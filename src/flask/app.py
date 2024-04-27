@@ -51,25 +51,6 @@ def show_mel_converted(filename):
 def index():
     return render_template('index.html')
 
-#
-#音声変換方法のモードの選択
-#
-
-#音声ファイルで変換
-@app.route('/modeFile', methods=['GET', 'POST'])
-def modeFile():
-    return render_template('post.html',boolean = False)
-
-#音声を録音して変換
-@app.route('/modeRecord', methods=['GET', 'POST'])
-def modeRecord():
-    return render_template('modeSelect.html')
-
-#MOSモード
-@app.route('/modeMOS', methods=['GET', 'POST'])
-def modeMos():
-    return render_template('mosSelect.html')
-
 #音声ファイルを取得し変換するメソッド
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
