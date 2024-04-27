@@ -10,12 +10,12 @@
 <body>
     <div class="center">
     <h1>AIを使って音声を変換しよう!!!</h1>
-    <h2>Signup</h2>
-    <form action="/modeSelect2" method="post">
+    <h2>Sign up</h2>
+    <form action="/modeSelect" method="post">
         ID<br>
-        <input type="text" name="data1" placeholder="Yamada" required></input><br>
+        <input type="text" name="username" placeholder="Yamada" pattern="^[0-9a-zA-Z]+$" required></input><br>
         Password<br>
-        <input type="text" name="data2" placeholder="password" required></input><br>
+        <input type="text" name="password" placeholder="password" pattern="^[0-9a-zA-Z]+$" required></input><br>
         <button type="submit">送信</button>
     </form>
     </div>
