@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, flash
 from .models.db_func import register, auth, isSameUser
 
 login_signup = Blueprint('login_signup', __name__, template_folder='login_signup_templates')
@@ -30,6 +30,7 @@ def modeSelect():
             # 同一ユーザがいるかどうか確認する
             if isSameUser(entered_name):
                 print("同名のユーザが存在する")
+                flash("同じ名前のユーザが存在します。名前を変更してください。")
                 return redirect("/sign_up")
             
             else: # 同一のユーザがいない場合、登録する

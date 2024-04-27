@@ -9,6 +9,9 @@ from makeSps import saveSps
 from blueprints.login_signup.view import login_signup
 
 app = Flask(__name__)
+# セッション情報を暗号化するために使用する
+# この設定はflashを使用するために必要
+app.secret_key = 'secret_key'
 
 # blueprint の登録
 app.register_blueprint(login_signup)

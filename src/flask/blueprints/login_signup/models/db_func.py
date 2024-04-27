@@ -82,7 +82,7 @@ def isSameUser(username):
     isSame = False
 
     for list in result:
-        print(list)
+        # print(list)
         # 同じ名前ならfalseにする
         if list[1] == username:
             print("OK")
