@@ -18,8 +18,6 @@ app.secret_key = 'secret_key'
 app.register_blueprint(login_signup)
 app.register_blueprint(modeSelect)
 
-count = 0
-
 def convertWav(file_name):
     """ ユーザから得られた音声データをwav形式に変換するメソッド
 
