@@ -5,27 +5,17 @@ from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
 from makeSps import saveSps
 
+# blueprint の import 
 from blueprints.login_signup.view import login_signup
-# from blueprints.login_signup.view import login_signup
-
-# python で mysql を使用するためのモジュール
-import mysql.connector as mydb
+from blueprints.funcA.funcA import funcA
 
 app = Flask(__name__)
+
+# blueprint の登録
+app.register_blueprint(funcA)
 app.register_blueprint(login_signup)
-# app.register_blueprint(login_signup)
-
-
 
 count = 0
-
-conn = mydb.connect(
-    host='db',
-    port='3306',
-    user='username',
-    password='password',
-    database='app_db'
-)
 
 def convertWav(file_name):
     """ ユーザから得られた音声データをwav形式に変換するメソッド
