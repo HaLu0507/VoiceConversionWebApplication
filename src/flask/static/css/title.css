@@ -1,16 +1,14 @@
 /*
-見出しの
+見出しの設定
 */
 h1 {
     position: relative;
     text-align: center;
     padding: 1rem .5rem;
 }
-
-h2{
-    position: relative;
-    left: 15px;
-}
+/*
+見出しの下線の設定
+*/
 h1:after {
     position: absolute;
     bottom: 0;

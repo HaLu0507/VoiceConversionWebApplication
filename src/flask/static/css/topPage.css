@@ -1,0 +1,13 @@
+/*
+ボタンの配置
+*/
+table {
+    margin:auto;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+
+/* .bottom_class{
+    border-collapse: separate;
+    border-spacing: 5px;
+} */

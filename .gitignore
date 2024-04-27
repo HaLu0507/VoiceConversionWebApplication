@@ -11,4 +11,5 @@ src/flask/models/converters/CycleGAN_VC2/.venv
 
 # pycacheの内容
 *.pyc
+>>>>>>> origin/top_page
 **/__pycache__/**

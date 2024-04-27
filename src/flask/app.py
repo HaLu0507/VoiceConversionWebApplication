@@ -5,7 +5,16 @@ from selectModel import selectModel
 from models.preprocess.removalNoise import removalBackgroundNoise
 from makeSps import saveSps
 
+# blueprint の import 
+from blueprints.login_signup.view import login_signup
+
 app = Flask(__name__)
+# セッション情報を暗号化するために使用する
+# この設定はflashを使用するために必要
+app.secret_key = 'secret_key'
+
+# blueprint の登録
+app.register_blueprint(login_signup)
 
 count = 0
 
@@ -38,26 +47,18 @@ def show_mel_converted(filename):
 #最初の画面の表示
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('login.html')
+    return render_template('index.html')
 
-#パスワード認証
-@app.route('/login', methods=['GET', 'POST'])
-def modeSelect():
-    # フォームから送信されたユーザー名とパスワードを取得
-    try:
-        entered_password = request.form['data1']
-        if(not entered_password == "webApp2023"):
-            return render_template('login.html')
-        else:
-            return render_template('modeSelect.html')
 
-    except:
-        return render_template('login.html')
+
+
+#
+#音声変換方法のモードの選択
+#
 
 #音声ファイルで変換
 @app.route('/modeFile', methods=['GET', 'POST'])
 def modeFile():
-    print("file")
     return render_template('post.html',boolean = False)
 
 
@@ -65,32 +66,32 @@ def modeFile():
 #音声を録音して変換
 @app.route('/modeRecord', methods=['GET', 'POST'])
 def modeRecord():
-    print("record")
-    return render_template('post.html',boolean = False)
+    return render_template('modeSelect.html')
 
 
 
 #MOSモード
 @app.route('/modeMOS', methods=['GET', 'POST'])
 def modeMos():
-    print("mos")
-    return render_template('post.html',boolean = False)
+    return render_template('mosSelect.html')
 
 #音声ファイルを取得し変換するメソッド
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
-        
-    #変換が男性から女性か女性から男性かの文字列
-    #男性から女性:"convertM2W",  女性から男性:"convertW2M"
-    mode = request.form.get('sel')
+    try:
+        #変換が男性から女性か女性から男性かの文字列
+        #男性から女性:"convertM2W",  女性から男性:"convertW2M"
+        mode = request.form.get('sel')
 
-    #変換の手法の文字列
-    #CycleGAN_VC2、MaskCycleGAN_VC
-    method = request.form.get('method')
+        #変換の手法の文字列
+        #CycleGAN_VC2、MaskCycleGAN_VC
+        method = request.form.get('method')
 
-    print(method)
-    #htmlでアップロードされたファイルを取得
-    file = request.files['file']
+        print(method)
+        #htmlでアップロードされたファイルを取得
+        file = request.files['file']
+    except:
+        return render_template('post.html',error = "正しくアクセスしてください",boolean = False)
     print(request.files['file'])
 
 
@@ -132,6 +133,43 @@ def upload_file():
     #次の外面に遷移する
     #fileBは変換前の音声ファイル、fileAは変換後の音声ファイル
     return render_template('post.html', file_name=str(origin_name), boolean=True)
+
+
+#
+#MOSのモードの選択
+#
+
+#Naturalness
+@app.route('/NaturalnessMOS', methods=['GET', 'POST'])
+def naturalnessMOS():
+    return render_template('naturalnessMOSSample.html')
+
+
+#Similarity
+@app.route('/SimilarityMOS', methods=['GET', 'POST'])
+def similarityMos():
+    return render_template('mosSelect.html')
+
+#Naturalnessで評価画面へ
+@app.route('/NaturalnessEvaluation', methods=['GET', 'POST'])
+def NaturalnessEvaluation():
+    model = request.form.get('model')
+    audio = request.form.get('audio')
+    if  not(model == None) or not(audio == None):
+        return render_template('naturalnessMOSEvaluation.html')
+    else:
+        return render_template('naturalnessMOSSample.html')
+
+#Naturalnessの評価結果
+@app.route('/NaturalnessEvaluationRes', methods=['GET', 'POST'])
+def naturalnessEvaluationRes():
+    mosNaturalnessRes = []
+    for i in range(5):
+        p = request.form.get('test' + str(i+1))
+        if(p == None):
+            return render_template('naturalnessMOSEvaluation.html')
+        mosNaturalnessRes.append(p)
+    return render_template('login.html')
 
 
 if __name__ == "__main__":

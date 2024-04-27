@@ -1,0 +1,36 @@
+/*
+* submitボタンの設定
+*/
+button[type="submit"] {
+    width: 10%;
+    padding: 10px;
+    margin: 10px;
+    background-color: #2589d0;
+    color: #ffffff;
+    border: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+/*
+* submitボタンのカーソルが合わさった時の設定
+*/
+button[type="submit"]:hover {
+    background-color: #0000FF;
+}
+
+audio 
+{ 
+    width: 280px; height: 60px; margin: 20px;
+}
+
+.sound
+{
+    float: left;
+}
+
+
+.eval_con
+{
+    display:block;
+}
