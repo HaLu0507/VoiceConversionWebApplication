@@ -7,6 +7,7 @@ from makeSps import saveSps
 
 # blueprint の import 
 from blueprints.login_signup.view import login_signup
+from blueprints.modeSelect.view import modeSelect
 
 app = Flask(__name__)
 # セッション情報を暗号化するために使用する
@@ -15,6 +16,7 @@ app.secret_key = 'secret_key'
 
 # blueprint の登録
 app.register_blueprint(login_signup)
+app.register_blueprint(modeSelect)
 
 count = 0
 
@@ -49,9 +51,6 @@ def show_mel_converted(filename):
 def index():
     return render_template('index.html')
 
-
-
-
 #
 #音声変換方法のモードの選択
 #
@@ -61,14 +60,10 @@ def index():
 def modeFile():
     return render_template('post.html',boolean = False)
 
-
-
 #音声を録音して変換
 @app.route('/modeRecord', methods=['GET', 'POST'])
 def modeRecord():
     return render_template('modeSelect.html')
-
-
 
 #MOSモード
 @app.route('/modeMOS', methods=['GET', 'POST'])
