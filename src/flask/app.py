@@ -7,6 +7,7 @@ from blueprints.login_signup.view import login_signup
 from blueprints.modeSelect.view import modeSelect
 from blueprints.mos.view import mos
 from blueprints.vc_file.view import vc_file
+from blueprints.vc_record.view import vc_record
 
 app = Flask(__name__)
 # セッション情報を暗号化するために使用する
@@ -19,6 +20,7 @@ app.register_blueprint(login_signup)
 app.register_blueprint(modeSelect)
 app.register_blueprint(mos)
 app.register_blueprint(vc_file)
+app.register_blueprint(vc_record)
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5009)

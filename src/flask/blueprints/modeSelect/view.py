@@ -10,7 +10,7 @@ def modeFile():
 #音声を録音して変換
 @modeSelect.route('/modeRecord', methods=['GET', 'POST'])
 def modeRecord():
-    return render_template('modeSelect.html')
+    return render_template('vc_record.html')
 
 #MOSモード
 @modeSelect.route('/modeMOS', methods=['GET', 'POST'])
