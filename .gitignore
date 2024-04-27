@@ -3,6 +3,9 @@
 *.m4a
 *.jpeg
 
+# DS_Store
+**/.DS_Store
+
 # モデルのチェックポイントもgitに追加しないように設定
 **/_CycleGAN_CheckPoint
 
