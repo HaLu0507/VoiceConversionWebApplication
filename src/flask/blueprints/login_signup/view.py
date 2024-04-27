@@ -51,6 +51,7 @@ def modeSelect():
                 return render_template("modeSelect.html")
             else: # 認証が失敗した時
                 print("認証失敗")
+                flash("ユーザ名あるいはパスワードが誤っています。")
                 return redirect("/login")
         
         except Exception as e:

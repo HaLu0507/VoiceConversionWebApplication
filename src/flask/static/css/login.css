@@ -14,6 +14,11 @@ input[type="password"] {
   border-radius: 4px;
 }
 
+.flash-messages {
+  color: red;
+  font-weight: bold;
+}
+
 #login{
   width: 20%;
   padding: 10px;
