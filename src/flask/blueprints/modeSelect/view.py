@@ -1,11 +1,11 @@
-from flask import Blueprint, render_template, request, redirect, flash
+from flask import Blueprint, render_template
 
 modeSelect = Blueprint('modeSelect', __name__, template_folder='modeSelect_templates')
 
 #音声ファイルで変換
 @modeSelect.route('/modeFile', methods=['GET', 'POST'])
 def modeFile():
-    return render_template('post.html',boolean = False)
+    return render_template('vc_file.html',boolean = False)
 
 #音声を録音して変換
 @modeSelect.route('/modeRecord', methods=['GET', 'POST'])

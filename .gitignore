@@ -4,12 +4,11 @@
 *.jpeg
 
 # モデルのチェックポイントもgitに追加しないように設定
-src/flask/models/converters/CycleGAN_VC2/_CycleGAN_CheckPoint
+**/_CycleGAN_CheckPoint
 
 # poetryによって作成された環境(.venv)もgitに追加しないように設定
-src/flask/models/converters/CycleGAN_VC2/.venv
+**/.venv/**
 
 # pycacheの内容
 *.pyc
->>>>>>> origin/top_page
 **/__pycache__/**
