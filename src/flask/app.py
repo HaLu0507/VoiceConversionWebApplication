@@ -7,12 +7,10 @@ from makeSps import saveSps
 
 # blueprint の import 
 from blueprints.login_signup.view import login_signup
-from blueprints.funcA.funcA import funcA
 
 app = Flask(__name__)
 
 # blueprint の登録
-app.register_blueprint(funcA)
 app.register_blueprint(login_signup)
 
 count = 0
