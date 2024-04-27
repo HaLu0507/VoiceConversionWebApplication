@@ -4,7 +4,15 @@ input[type="text"] {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+}
+
+input[type="password"] {
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
   
 button[type="submit"]{
     width: 20%;
