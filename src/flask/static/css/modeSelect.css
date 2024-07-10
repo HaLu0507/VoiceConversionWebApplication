@@ -1,21 +1,22 @@
 /*
 * submitボタンの設定
 */
-
-button[type="submit"] {
-    width: 20%;
-    padding: 100px;
-    margin: 10px;
-    background-color: #2589d0;
-    color: #ffffff;
-    border: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-/*
-* submitボタンのカーソルが合わさった時の設定
-*/
-  button[type="submit"]:hover {
-    background-color: #0000FF;
-  }
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 10px;
+  border-radius: 4px;
+  background-color: #8ac7f2;
+}
+.icon-button img {
+  margin-right: 8px; /* アイコンとテキストの間のスペース */
+  width: 20px; /* アイコンの幅 */
+  height: 20px; /* アイコンの高さ */
+}
+.icon-button:hover {
+  background-color: #73b3e1;
+}

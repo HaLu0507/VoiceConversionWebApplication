@@ -13,15 +13,25 @@
     <h2>音声の取得方法を選択してください</h2>
     <table>
         <form action="/modeFile" method="post">
-            <button type="submit">音声ファイルを変換する</button>
+            <button class="icon-button" type="submit">
+                <img src="/static/icon/audio_file_image.png" alt="Icon">
+                音声ファイルを変換する                
+            </button>
         </form>
 
         <form action="/modeRecord" method="post">
-            <button type="submit">録音して変換する</button>
+            <button class="icon-button" type="submit">
+                <img src="/static/icon/record.png" alt="Icon">
+                録音して変換する
+            </button>
+        </form>
+
+        <form action="/modeMOS" method="post">
+            <button class="icon-button" type="submit">
+                <img src="/static/icon/mos.png" alt="Icon">
+                MOSを行う
+            </button>
         </form>
     </table>
-        <form action="/modeMOS" method="post">
-            <button type="submit">MOSを行う</button>
-        </form>
 </body>
 </html>
